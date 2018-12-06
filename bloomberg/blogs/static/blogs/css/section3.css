@@ -1,0 +1,112 @@
+#fluid-container1{
+    height:16.3rem;
+    background: linear-gradient(to right, #ffd89b,#19547b ,#243b55);
+}
+#featured-stories{
+    color:rgba(247, 1, 1, 0.89);
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size:38px;
+    padding-left:6%;
+    padding-top:3%; 
+}
+@media screen and (max-width: 1050px) and (min-width :670px){
+    #featured-stories{
+        font-size:36px;
+        padding-left:3%;
+        padding-top:3%; 
+    }
+    #fluid-container1{
+        height:15.3rem;
+    }      
+}
+@media screen and (max-width: 670px) {
+    #featured-stories{
+        font-size:30px;
+        padding-left:3%;
+        padding-top:3%; 
+    }
+    #fluid-container1{
+        height:14.3rem;
+        background: linear-gradient(to right, #ffd89b,#f3bf6a,#243b55);
+    }  
+} 
+
+
+/* grid-container3*/
+
+#grid-container3{
+    display:grid;
+     
+}
+.item31{
+    grid-row:1;
+    grid-column:1;
+    height:5rem;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+}
+ 
+.item32{
+    grid-row:2;
+    grid-column:1;
+    height:5.6rem;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+}
+.item33{
+    grid-row:3;
+    grid-column:1;
+    height:5.55rem;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+}
+.item34{
+    grid-row:4;
+    grid-column:1;
+    height:5.51rem;
+}
+#card-img31{
+    margin-left:1rem;
+    height:4.5rem;
+    width:5rem;
+    border: 0ex;
+}
+#card-img32{
+    margin-left:1rem;
+    height:4.5rem;
+    width:5rem;
+    border: 0ex;
+    margin-top:0.5rem;
+}
+#card-body-img3{
+    float:left;
+}
+#card-body-text31{
+    float: left;
+    overflow:hidden;
+    width:70%;
+}
+#card-body-text31 :hover{
+    color:red;
+}
+#card-title31{
+    padding-top:5px;
+    font-weight:600;
+    padding-left:5%;
+    margin-bottom:-3px;
+}
+#card-text31{
+    font-size:15px;
+    padding-left:5%;
+    opacity: 0.5; 
+}
+#card-title32{
+    padding-top:13px;
+    font-weight:600;
+    padding-left:5%;
+    margin-bottom:-3px;
+}
+#card-text32{
+    font-size:15px;
+    padding-left:5%;
+    opacity: 0.5; 
+} 
+ 

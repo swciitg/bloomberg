@@ -1,0 +1,77 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}
+<meta charset="utf-8">
+<title>Blog Design</title>
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/css/blog.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+      <h4 class="topic">{{ blog.topic}}
+</h4>
+  <h1 class="headline">{{ blog.title }}</h1></br>
+  <h3>{{ blog.name }}</h3>
+  <h5 class="datetime">{{ blog.createdAt.date }}<span class="time">{{ blog.createdAt.time }}</span></h5>
+  <!-- <ul class="bullet">
+    <hr class="highlighthr">
+       <li>More than 50 financial firms to be shortlisted for SIFI label</li>
+       <li>More than 50 financial firms to be shortlisted for SIFI label</li>
+    <hr class="highlighthr">
+  </ul> -->
+  <div class="coverphoto"><img class="coverphoto" src="{{ blog.image.url }}"></div>
+<div class="content">
+  <p>{{ blog.content }}</p>
+
+</div>
+  <hr class="end">
+<div class="author">
+  <figure class="fir-image-figure">
+
+  <div class="fir-imageover" rel="noopener" target="_blank" href="#">
+    <img class="fir-author-image fir-clickcircle" src="{{ author.image.url }}" alt="#">
+    </div>
+     <figcaption>
+    <p></p>
+    <div class="fig-author-figure-title">{{ blog.name }}</div>
+    <!-- <div class="fig-author-figure-title">Consulting Detective.</div> -->
+    <!-- <div class="fig-author-figure-title">{{ blog.createdAt }}</div> -->
+    <br>
+    <div class="fig-author-follow"><button type="button" class="btn btn-outline-success">FOLLOW</button></div>
+
+    </figcaption>
+  </figure>
+
+</div>
+<div class="form-group">
+<label for="comment">Leave a Comment:</label>
+<textarea class="form-control" rows="5" id="comment" placeholder="A Facebook Plugin"></textarea>
+</div>
+<div class="more"><a href="{% url 'index' %}">MORE ARTICLES FOR YOU</a></div>
+
+</div>
+
+
+
+
+
+
+    <section class="social">
+  <ul class="sidebar float">
+    <li><i class="fa fa-pied-piper"></i><span>Hats Off</span></li>
+    <li><i class="fa fa-twitter"></i><span>Twitter</span></li>
+    <li><i class="fa fa-facebook"></i><span>Facebook</span></li>
+    <li><i class="fa fa-bookmark-o"></i><span>Bookmark</span></li>
+    <li><i class="fa fa-whatsapp"></i><span>WhatsApp</span></li>
+  </ul>
+  </section>
+
+
+</div>
+    </div>
+{% endblock %}

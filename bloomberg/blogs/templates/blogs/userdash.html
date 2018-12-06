@@ -1,0 +1,104 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>DashBoard</title>
+<meta name="theme-color" content="#000000">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'blogs/css/userdashsection.css' %}"/>
+        <link rel="stylesheet" href="{% static 'blogs/css/userdashnavbar.css' %}"/>
+{% endblock %}
+
+{% block content %}
+     <!--Navigation bar-->
+     <nav class="navbar navbar-default " id="navbar1" role="navigation">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="{% url 'index' %}"><h1 id="glorify">Glorify</h1></a>
+          </div>
+          <div class="navbar-text navbar-right" id="media"  >
+              <a href = "{% url 'index' %}"><button type="button" class="btn btn-outline-success">BACK TO HOME</button></a>
+              <a href = "{% url 'logout' %}"><button type="button" class="btn btn-outline-success">LOG OUT</button></a>
+          </div>
+      </div>
+    </nav>
+    <h3 id="dashBoard">Welcome to DashBoard</h3>
+
+
+  <!-- <div class="grid-container1">
+    <div class="item">
+    <figure class="fir-image-figure">
+    <div class="fir-imageover" rel="noopener" target="_blank" href="#">
+      <img class="fir-author-image fir-clickcircle" src="http://s3.amazonaws.com/quietus_production/images/articles/21578/sherlock-season-4-featured-image_1484578180_crop_550x373.jpg" alt="#">
+      </div>
+      <figcaption id="figcaption">
+      <div class="fig-author-figure-title" style="font-weight:800;">{{ user }}</div>
+      <div class="fig-author-figure-title"id="degination">Univesity of California</div>
+      <div class="fig-author-figure-title"id="degination">5 Live |1 Unlive POST</div>
+      </figcaption>
+    </figure>
+    </div>
+    <div class="item0">
+    </div>
+  </div>
+  <br/><br/>
+  <div class="container"id="createPost">
+    <button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button>
+  </div> -->
+
+  <!--Grid container-->
+  <div class="flex-container nowrap" id="flex-container1">
+            <figure class="fir-image-figure">
+                <div class="fir-imageover" rel="noopener" target="_blank" href="#">
+                    <img class="fir-author-image fir-clickcircle" src="{{ user.image.url }}" alt="#">
+                </div>
+                <figcaption id="figcaption">
+                    <div class="fig-author-figure-title" style="font-weight:700;">{{user}}</div>
+                    <div class="fig-author-figure-title"id="degination">Univesity of California</div>
+                    <div class="fig-author-figure-title"id="degination">{{ live }} Live | {{ notlive }} Unlive POSTS</div>
+                </figcaption>
+            </figure>
+  </div>
+  <br/><br/>
+    <div class="container"id="createPost">
+          <a href="{% url 'blogUpload' %}"><button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button></a>
+    </div>
+
+        <ul class="flex-container nowrap">
+          {% for blog in blogs %}
+            <li class="flex-item">
+                    <img class="card-img" src="{{ blog.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="{% url 'blog' blog.id %}"><p class="card-title">{{ blog.title }}</p></a>
+                        <p class="card-text"id="card-short-text" >by {{ user }} | {{ blog.createdAt.date }} </p>
+                        {% if blog.content|wordcount <= 20 %}
+                        <p class="card-text"id="card-long-text"> {{ blog.content }}</p>
+                        {% else %}
+                        <p class="card-text"id="card-long-text"> {{ blog.content|truncatewords:20 }}</p>
+                        {% endif %}
+                        <!-- <p class="card-text"id="card-long-text"></p> -->
+                        <div>
+                            <button type="button" class="btn btn-outline-success btn-sm" >{% if blog.isLive %}Live{% else %}UnLive{% endif %}</button>
+                            <span id=count> <span id="responses">{{ blog.views }} views</span>  <i class="fa fa-bookmark-o"></i></span>
+                        </div>
+                    </div>
+            </li>
+          {% endfor %}
+
+        </ul>
+
+        <br/>
+        <br/>
+        <div id="footer-bootom">
+            <p id="footer-bootom-text">Copyright © 2018 <a href="#" id="glorify-footer">Glorify | SWC, IIT Guwahati</a> </p>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+{% endblock %}

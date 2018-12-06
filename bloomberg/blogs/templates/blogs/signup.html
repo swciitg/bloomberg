@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/css/signup.css' %}">
+
+<!-- recaptcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class='bold-line'></div>
+<div class='container'>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class='welcome'>Hello There!</div>
+      <div class='subtitle'>Sign up to write your own blogs.</div>
+      <div class='input-fields'>
+        <form action = "" method = "post">
+          {% csrf_token %}
+          {{ form.as_table }}
+          <div class='spacing'>or continue with <span class='highlight'>Outlook</span></div>
+          <div class="g-recaptcha" data-sitekey="6LeAnngUAAAAAPIJPYEoVGcxItSqGTE91Z-3WmwB"></div>
+          <div><button class='ghost-round full-width' value = "Submit">Create Account</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

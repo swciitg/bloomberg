@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  {% block title %}{% endblock %}
+  <meta charset = "utf8">
+  <meta name="viewport" content = "width = device-width , initial-scale = 1">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+</head>
+<body >
+  {% block content %}{% endblock %}
+
+  {% block pagination %}
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class = "page-links">
+        {% if page_obj.has_previous %}
+        <a href = "{{ request.path }}?page={{ page_obj.previous_page_number }}">previous&nbsp;</a>
+        {% endif %}
+        <span class="page-current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+          <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">&nbsp;next</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+  {% endblock %}
+</body>
+</html>

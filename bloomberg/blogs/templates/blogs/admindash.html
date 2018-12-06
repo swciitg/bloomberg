@@ -1,0 +1,63 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}
+<title>Admin</title>
+<link rel="stylesheet" href="{% static 'blogs/css/admindash.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-2.1.3.js" integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+<span class="bckg"></span>
+<header>
+  <h1>Dashboard</h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="{% url 'admindash' %}">All Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'pendingpost' %}">Pending Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'newpost' %}">New Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Log Out</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="title">
+    <h2>{{ page_title }}</h2>
+    <a href="{% url 'logout' %}">Hello {{ user }} !</a>
+
+  </div>
+
+  <article class="larg">
+    {% for blog in blogs  %}
+    <div>
+      <h3>{{ blog.title }}
+        <a href="{% url 'bloglive' blog.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Make Live</button></span>&nbsp;&nbsp;&nbsp;</a>
+        <a href="{% url 'blogblock' blog.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Block</button></span></a>
+        <!-- <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label> -->
+      </h3>
+      <p>By : {{ blog.name }}</p>
+      <p>{{ blog.content }}</p>
+    </div>
+    {% endfor %}
+  </article>
+</main>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+  <script  src="{% static 'blogs/js/admindash.js' %}"></script>
+
+
+{% endblock %}

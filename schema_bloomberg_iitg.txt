@@ -1,0 +1,35 @@
+user model - 
+
+userID -  a randomly generated 7 digit alha-numeric value ( Data type - char )
+name -  full name ( Data type - char )
+emailID - ( Data type - email  )
+mobile - ( Data type - number )
+password - ( Data type - char ) - HASH THIS  DO NOT STORE IN PLAIN TEXT
+totalBlogsWritten - ( Data type - number )
+isBlocked -  ( Data type - boolean, default - false )
+isAdmin - ( Data type - boolean, default - false )
+isModerator - ( Data type - boolean, default - false )
+
+
+blog model - 
+
+blogID - a randmoly generated 11 digit alpha numeric value ( Data type - char )
+title - ( Data type - char )
+authorID - ( Data type - char ) - user ID of the person who has written it
+isLive - ( Data type - boolean, default = false )
+likes - ( Data type - number )
+tags - ( Data type - array ) - a array of tags associated with this blog
+views - ( Data type - number ) - no of views of this blog
+lastUpdated - ( Data type - number ) - store it in epoch timestamp ( search google for this )
+createdAt - ( Data type - number ) - store it in epoch timestamp ( search google for this )
+content - ( Data type - text )
+approvedBy - ( Data type - char ) - user ID of the admin/moderator who has approved this blog
+
+
+comments model - 
+
+commentID - a randmoly generated 17 digit alpha numeric value ( Data type - char )
+blogID - ( Data type - char ) - blog ID to which this comment belongs
+author - ( Data type - char ) - user ID who has added this comment
+isLive - ( Data type - boolean, default - true ) - admin can make this false
+content - ( Data type - text )
