@@ -54,14 +54,14 @@ def login(request):
 			# if bloguser.isAdmin:
 			# 	return HttpResponseRedirect(reverse('admindash',args=()))
 			users = UserDetail.objects.get(emailID = emailID)
-			Session.objects.create{
-				userID = users.userID
-				name = users.name
-				emailID = users.emailID
-				logInTime = datetime.datetime.now()
-				logOutTime = None
-				isExpired = False
-			}
+			Session.objects.create(
+				userID = users.userID,
+				name = users.name,
+				emailID = users.emailID,
+				logInTime = datetime.datetime.now(),
+				logOutTime = None,
+				isExpired = False,
+			)
 			if users.isAdmin:
 				return HttpResponseRedirect(reverse('admindash',args=()))
 			return HttpResponseRedirect(reverse('userdash',args=()))
@@ -134,7 +134,7 @@ def logout(request):
 	try:
 		del request.session['eid']
 	except KeyError:
-		pass	
+		pass
 	return HttpResponseRedirect(reverse('index',args=()))
 
 def userdash (request):
