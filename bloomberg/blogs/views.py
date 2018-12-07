@@ -2,13 +2,14 @@ import string
 import random
 import json
 import urllib
+import datetime
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.db.models import F
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import LoginForm, SignUpForm, BlogUploadForm
 from passlib.hash import pbkdf2_sha256
-from .models import UserDetail , Blog , Comment
+from .models import UserDetail , Blog , Comment , Session
 from django.urls import reverse
 from django.contrib import messages
 
@@ -53,6 +54,14 @@ def login(request):
 			# if bloguser.isAdmin:
 			# 	return HttpResponseRedirect(reverse('admindash',args=()))
 			users = UserDetail.objects.get(emailID = emailID)
+			Session.objects.create{
+				userID = users.userID
+				name = users.name
+				emailID = users.emailID
+				logInTime = datetime.datetime.now()
+				logOutTime = None
+				isExpired = False
+			}
 			if users.isAdmin:
 				return HttpResponseRedirect(reverse('admindash',args=()))
 			return HttpResponseRedirect(reverse('userdash',args=()))
@@ -125,7 +134,7 @@ def logout(request):
 	try:
 		del request.session['eid']
 	except KeyError:
-		pass
+		pass	
 	return HttpResponseRedirect(reverse('index',args=()))
 
 def userdash (request):
@@ -221,7 +230,7 @@ def blog(request , pk):
 		user = UserDetail.objects.get(emailID = emailID)
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('permissiondenied'))
-		elif not blog.isLive:
+		if not blog.isLive:
 			if not blog.authorID == user.userID:
 				return HttpResponseRedirect(reverse('index'))
 			else:
@@ -232,13 +241,16 @@ def blog(request , pk):
 				}
 				return render(request, 'blogs/blog.html' , context)
 		else:
-			str = str + emailID
-			if not request.session.has_key(str):
-				request.session[str]=1
-				blog.views = F('views') + 1
-				blog.save()
-			else:
+			if blog.authorID == user.userID:
 				pass
+			else:
+					str = str + emailID
+					if not request.session.has_key(str):
+						request.session[str]=1
+						blog.views = F('views') + 1
+						blog.save()
+					else:
+						pass
 	else:
 		if not request.session.has_key(str):
 			request.session[str]=1
