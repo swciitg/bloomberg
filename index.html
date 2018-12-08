@@ -13,6 +13,20 @@
     <link href="footer.css" rel="stylesheet"/>
   </head>
   <body id="body">
+
+    <!-- Pop-window -->
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <p id="pop-up-subscribe">Join the Newsletter</p>
+        <p id="pop-up-text">Receive the latest content from The Glorify by subscribing to the newsletter.</p>
+        <input id="pop-up-email" class="form-control"aria-describedby="emailHelp" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Type your email'">
+        <button id="close" class="btn">Subscribe Now</button>
+        <button class="close" >No,thanks</button>
+      </div>
+    </div>
+
+    
+    <div id="pop-up-background">       
     <nav class="navbar navbar-default navbar-expand-lg  navbar-dark bg-dark fixed-top" id="navbar1">
       <a class="navbar-brand" href="#"><h1 id="glorify">Glorify</h1></a>
       <button class="navbar-toggler"id="navbartoggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +37,13 @@
         </ul>
         <ul class="navbar-nav">
           <li class="navbar-item">
-            <button class="btn btn-outline-info mr-2"id="suscribe" type="submit">Subscribe</button>
-            <a href="#" class="fa fa-facebook mr-2 my-2 "></a>
-            <a href="#" class="fa fa-twitter mr-2 my-2"></a>
+            <button class="btn btn-outline-info mr-2"id="suscribe" type="submit" title="Subscribe Now">Subscribe</button>
+            <a href="#" class="fa fa-facebook mr-2 my-2 " title="Like on Facebook"></a>
+            <a href="#" class="fa fa-twitter mr-2 my-2" title="Follow on Twitter"></a>
           </li>
           <li class="navbar-item">
-            <button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login">Log In</button>
-            <button class="btn btn-info my-2" type="submit">Sign Up</button>
+            <a href="login.html"><button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login" title="Log In">Log In</button></a>
+            <button class="btn btn-info my-2" type="submit" title="Sign Up">Sign Up</button>
           </li>
         </ul> 
       </div>   
@@ -204,11 +218,12 @@
       <div class="grid-item" id="grid-item-footer">
         <p id="contact-footer">CONTACT US</p>
         <p id="email"><span id="email-footer">Email: </span><a href="#" id="email-link-footer">glorify@iitg.ac.in</a></p>
-        <p id="about-us-footer">About Us</p>
-      </div>
+        <a href="about_us.html" terget="_blank"><p id="about-us-footer" title="Meet Team Glorify" >About Us</p></a>
+      </div> 
     </div>
     <div id="footer-bootom">
       <p id="footer-bootom-text">Copyright © 2018 <a href="#" id="glorify-footer">Glorify | SWC, IIT Guwahati</a> </p>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

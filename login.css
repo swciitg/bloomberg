@@ -1,0 +1,74 @@
+#body{
+    background: linear-gradient(to right,#0f92cf,rgb(190, 90, 230),rgb(235, 33, 241));  
+}
+#grid-container-login{
+    display:grid;
+    margin-left:30.5%;
+    margin-right:30.5%;
+    background-color: white;
+    border-radius:10px;
+    margin-top:1rem;
+}
+#glorify-login{
+    font-weight:1000;
+    opacity:0.95; 
+    text-align:center;
+    font-size:2.25rem;
+    padding-top:4rem;
+    padding-bottom:4rem;
+}
+#form{
+    padding-left:10%;
+    padding-right:10%;
+}
+#username-password{
+    font-size:15px;
+}
+#forgot-password{
+    font-size:15px;
+    text-align:end;
+    color:rgb(136, 136, 136);    
+}
+#forgot-password :hover{
+    color:rgb(195, 9, 219);
+}
+#login-button{
+    background: linear-gradient(to right,#0f92cf,rgb(190, 90, 230),rgb(235, 33, 241));
+    margin-left:4%;
+    padding-left:40%;
+    padding-right:40%;
+    border-radius:5rem;
+}
+#sign-up{
+    text-align: center;
+    color:rgb(105, 105, 105);
+     
+}
+#sign-up :hover{
+    color:rgb(195, 9, 219);
+}
+
+@media screen and (max-width:950px) and (min-width:800px){
+    #grid-container-login{
+        margin-left:25%;
+        margin-right:25%;
+    }
+}
+@media screen and (max-width:800px) and (min-width:700px){
+    #grid-container-login{
+        margin-left:15%;
+        margin-right:15%;
+    }
+}
+@media screen and (max-width:700px) and (min-width:600px){
+    #grid-container-login{
+        margin-left:7%;
+        margin-right:7%;
+    }
+}
+@media screen and (max-width:600px){
+    #grid-container-login{
+        margin-left:2%;
+        margin-right:2%;
+    }
+}

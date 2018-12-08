@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>User Dashboard</title>
+        <meta name="theme-color" content="#000000">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="section.css"/>
+        <link rel="stylesheet" href="navbar.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-default " id="navbar1" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/index.html"><h1 id="glorify">Glorify</h1></a>
+                </div>
+                <div class="navbar-text navbar-right" id="media"  >
+                    <button type="button" class="btn btn-outline-success">BACK TO HOME</button>
+                    <button type="button" class="btn btn-outline-success">LOG OUT</button>
+                </div>
+            </div>
+        </nav>
+        <p id="dashBoard">Welcome to DashBoard</p>
+   
+  
+        <div class="flex-container nowrap" id="flex-container1">             
+            <figure class="fir-image-figure">
+                <div class="fir-imageover" rel="noopener" target="_blank" href="#">
+                    <img class="fir-author-image fir-clickcircle" src="http://s3.amazonaws.com/quietus_production/images/articles/21578/sherlock-season-4-featured-image_1484578180_crop_550x373.jpg" alt="#">
+                </div>
+                <figcaption id="figcaption">
+                    <div class="fig-author-figure-title" style="font-weight:700;">Arindam Kashyap</div>
+                    <div class="fig-author-figure-title"id="degination">Univesity of California</div>
+                    <div class="fig-author-figure-title"id="degination">2 Live | 0 Unlive POSTS</div>
+                </figcaption>
+            </figure>  
+        </div>
+        <br/><br/>
+        <div class="container"id="createPost">
+            <button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button>
+        </div>
+
+        <ul class="flex-container nowrap">
+            <li class="flex-item">
+                    <img class="card-img" src="https://cdn-images-1.medium.com/max/800/1*rbqNo1KHoP2F_G-b-ds7hA.jpeg" alt="Card image cap">
+                    <div class="card-body"> 
+                        <p class="card-title">The 12 Best Books I Read in 2018</p>
+                        <p class="card-text"id="card-short-text" >by Mr Bond | 8 min read  </p>
+                        <p class="card-text"id="card-long-text">2018 was a fantastic year for reading. I felt like I branched out much more from my bad habit of reading whatever books were being made popular by podcasts and blogs, and managed to read some older, really excellent books.</p> 
+                        <div>
+                            <button type="button" class="btn btn-outline-success btn-sm">Live</button>
+                            <span id=count> <span id="responses">20 responses</span>  <i class="fa fa-bookmark-o"></i></span>
+                        </div>
+                    </div>     
+            </li>
+            <li class="flex-item">
+                    <img class="card-img" src="https://cdn-images-1.medium.com/max/800/1*rbqNo1KHoP2F_G-b-ds7hA.jpeg" alt="Card image cap">
+                    <div class="card-body"> 
+                        <p class="card-title">The 12 Best Books I Read in 2018</p>
+                        <p class="card-text"id="card-short-text" >by Mr Bond | 8 min read  </p>
+                        <p class="card-text"id="card-long-text">2018 was a fantastic year for reading. I felt like I branched out much more from my bad habit of reading whatever books were being made popular by podcasts and blogs, and managed to read some older, really excellent books.</p> 
+                        <div>
+                            <button type="button" class="btn btn-outline-success btn-sm">Live</button>
+                            <span id=count> <span id="responses">50 responses</span> <i class="fa fa-bookmark-o"></i></span> 
+                        </div>
+                    </div>     
+            </li>
+            
+            <!-- 
+                All other posts (container) will goes here same as upper two.
+            -->
+        </ul>
+        
+        <br/>
+        <br/>
+        <div id="footer-bootom">
+            <p id="footer-bootom-text">Copyright © 2018 <a href="#" id="glorify-footer">Glorify | SWC, IIT Guwahati</a> </p>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    </body>
+</html>

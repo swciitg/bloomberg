@@ -1,0 +1,137 @@
+/*Stylesheet for navigation bar*/
+#navbar1 { 
+    height:4.0rem; 
+}
+#glorify {
+    font-family: serif;
+    font-style: italic;
+    font-weight:bold;
+    color:black;
+    padding-left: 2rem;
+    font-size:3rem; 
+} 
+#dashBoard{
+    text-align:center;
+    color:rgb(177, 216, 34);
+    font-weight: 700;
+    font-size:2.2rem;
+    margin-top:-1.7rem;
+}
+@media screen and (max-width:1000px) and (min-width:900px){
+    #dashBoard{ 
+        font-weight: 600;
+        font-size:2rem;
+        margin-top:-1.7rem;
+    }
+}
+@media screen and (max-width:900px) and (min-width:650px){
+    #dashBoard{ 
+        font-weight: 600;
+        font-size:1.7rem;
+        margin-top:-1rem;
+    }
+}
+@media screen and (max-width:650px){
+    #dashBoard{ 
+        font-weight: 600;
+        font-size:1.5rem;
+        margin-top:-1rem; 
+    }
+}
+ 
+@media screen and (max-width:600px){
+     
+    #glorify {
+        padding-left: 0;
+        
+    }
+    #media{
+         visibility:hidden;
+    }
+    
+}
+figure {
+    display: flex;
+    margin-top: 100px;
+    
+  }
+  
+  .fir-clickcircle {
+    height: 130px;
+    width: 130px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  
+  .fir-image-figure {
+    margin: 0;
+    display: flex;
+    text-decoration: none;
+  }
+  
+  .fir-image-figure .caption, .fir-image-figure figcaption {
+    padding-left: 15px;
+  }
+  
+  
+  
+  .fir-image-figure .fig-author-figure-title {
+    font-weight: 400;
+    font-size: 20px;
+  
+  } 
+  #flex-container1{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    padding-right: 30%; 
+  }
+  @media screen and (max-width:900px){
+    .grid-container1{
+        padding-left:1px;
+    }
+    .fir-clickcircle {
+        height: 100px;
+        width: 100px;
+        border-radius: 70px;
+        cursor: pointer;
+    }
+    figure {
+        display: flex;
+        margin-top: 0px;
+         
+        
+    }
+  } 
+#figcaption{
+    padding-top:2rem;
+}
+#degination{
+    font-size:0.98rem;
+    color:darkgrey;
+    font-weight:500;
+} 
+.hr-text{
+    content:attr(data-content);
+}
+#createPost{
+    border-top:1px solid black;
+    border-color:#1d9d74; 
+}  
+#createNewPost{
+    margin-top:-1.25rem;
+    background-color:rgb(55, 167, 55);
+    color:white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
