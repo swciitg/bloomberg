@@ -38,7 +38,7 @@ def index (request):
 
 def login(request):
 	if request.session.has_key('eid'):
-		 return HttpResponseRedirect(reverse('index',args=()))
+		 return HttpResponseRedirect(reverse('blogs:index',args=()))
 
 	if request.method == 'POST':
 		login_form = LoginForm(request.POST)
@@ -54,8 +54,8 @@ def login(request):
 			# 	return HttpResponseRedirect(reverse('admindash',args=()))
 			users = UserDetail.objects.get(emailID = emailID)
 			if users.isAdmin:
-				return HttpResponseRedirect(reverse('admindash',args=()))
-			return HttpResponseRedirect(reverse('userdash',args=()))
+				return HttpResponseRedirect(reverse('blogs:admindash',args=()))
+			return HttpResponseRedirect(reverse('blogs:userdash',args=()))
 	else:
 		login_form = LoginForm();
 
@@ -67,7 +67,7 @@ def login(request):
 
 def signup(request):
 	if request.session.has_key('eid'):
-		 return HttpResponseRedirect(reverse('index',args=()))
+		 return HttpResponseRedirect(reverse('blogs:index',args=()))
 
 
 	if request.method == 'POST':
@@ -111,7 +111,7 @@ def signup(request):
 			else:
 			    messages.error(request, 'Invalid reCAPTCHA. Please try again.')
 
-			return HttpResponseRedirect(reverse('index',args=()))
+			return HttpResponseRedirect(reverse('blogs:index',args=()))
 	else:
 		signup_form = SignUpForm();
 
@@ -126,16 +126,16 @@ def logout(request):
 		del request.session['eid']
 	except KeyError:
 		pass
-	return HttpResponseRedirect(reverse('index',args=()))
+	return HttpResponseRedirect(reverse('blogs:index',args=()))
 
 def userdash (request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
 		if not UserDetail.objects.filter(emailID__exact = emailID):
-			return HttpResponseRedirect(reverse('login'))
+			return HttpResponseRedirect(reverse('blogs:login'))
 		user = UserDetail.objects.get(emailID = emailID)
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		blogs = Blog.objects.filter(authorID__exact = user.userID)
 		live=0
 		notlive=0
@@ -152,16 +152,16 @@ def userdash (request):
 		}
 		return render(request , 'blogs/userdash.html' , context)
 
-	return HttpResponseRedirect(reverse('login'))
+	return HttpResponseRedirect(reverse('blogs:login'))
 
 def admindash (request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		blogs = Blog.objects.all()
 		page_title = 'ALL POSTS'
 		context = {
@@ -172,16 +172,16 @@ def admindash (request):
 
 		return render(request , 'blogs/admindash.html' , context)
 
-	return HttpResponseRedirect(reverse('login'))
+	return HttpResponseRedirect(reverse('blogs:login'))
 
 def pendingpost(request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		blogs = Blog.objects.filter(approvedBy=None)
 		print(blogs)
 		page_title='PENDING POSTS'
@@ -197,9 +197,9 @@ def newpost(request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		page_title='NEW POSTS'
 		blogs = Blog.objects.all().order_by('-createdAt')
 		context = {
@@ -210,7 +210,7 @@ def newpost(request):
 
 		return render(request , 'blogs/admindash.html' , context)
 
-	return HttpResponseRedirect(reverse('login'))
+	return HttpResponseRedirect(reverse('blogs:login'))
 
 
 def blog(request , pk):
@@ -220,10 +220,10 @@ def blog(request , pk):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 		elif not blog.isLive:
 			if not blog.authorID == user.userID:
-				return HttpResponseRedirect(reverse('index'))
+				return HttpResponseRedirect(reverse('blogs:index'))
 			else:
 				author = user
 				context = {
@@ -290,7 +290,7 @@ def blogUpload(request):
 			    # m.model_pic = form.cleaned_data['image']
 				return HttpResponse('blog upload success')
 		else:
-			return HttpResponseRedirect(reverse('login'))
+			return HttpResponseRedirect(reverse('blogs:login'))
 
 	else:
 		blog_form = BlogUploadForm();
@@ -310,11 +310,11 @@ def bloglive(request, pk):
 			blog.isLive=True
 			blog.approvedBy=user.name
 			blog.save()
-			return HttpResponseRedirect(reverse('pendingpost'))
+			return HttpResponseRedirect(reverse('blogs:pendingpost'))
 		else:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 	else:
-		return HttpResponseRedirect(reverse('login'))
+		return HttpResponseRedirect(reverse('blogs:login'))
 
 def blogblock(request, pk):
 	blog = get_object_or_404(Blog , pk=pk)
@@ -325,8 +325,8 @@ def blogblock(request, pk):
 			blog.isLive=False
 			blog.approvedBy=user.name
 			blog.save()
-			return HttpResponseRedirect(reverse('pendingpost'))
+			return HttpResponseRedirect(reverse('blogs:pendingpost'))
 		else:
-			return HttpResponseRedirect(reverse('permissiondenied'))
+			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
 	else:
-		return HttpResponseRedirect(reverse('login'))
+		return HttpResponseRedirect(reverse('blogs:login'))
