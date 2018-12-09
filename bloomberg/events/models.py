@@ -6,12 +6,12 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 
 class Event(models.Model):
     title = models.CharField(max_length=128)
-    image = models.ImageField(upload_to = 'images/', default = 'images/325505.jpg')
+    image = models.ImageField(upload_to = 'images/', default = 'images/profile_pic.png')
     venue = models.CharField(max_length=128)
     date = UnixDateTimeField()
     associatedClub = models.CharField(max_length = 50)
-    description = models.TextField()
-    isLive = isLive = models.BooleanField(default=False)
+    description = models.CharField(max_length = 500)
+    isLive = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-date']
