@@ -4,6 +4,7 @@ from django.conf import settings
 
 from . import views
 
+app_name='events'
 urlpatterns = [
     path('event/<int:pk>', views.event, name= 'event'),
     path('upload/', views.eventUpload, name='eventUpload'),
