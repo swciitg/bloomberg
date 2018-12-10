@@ -33,12 +33,12 @@
                 <p style="color:white; margin:auto;">Hello {{ user }} &nbsp;</p>
               </li>
               <li class="navbar-item">
-                <a href="{% url 'logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
+                <a href="{% url 'blogs:logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
               </li>
             {% else %}
             <li class="navbar-item">
-              <a href = "{% url 'login' %}"><button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login">Log In</button></a>
-              <a href="{% url 'signup' %}"<button class="btn btn-info my-2" type="submit">Sign Up</button></a>
+              <a href = "{% url 'blogs:login' %}"><button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login">Log In</button></a>
+              <a href="{% url 'blogs:signup' %}"<button class="btn btn-info my-2" type="submit">Sign Up</button></a>
             </li>
             {% endif %}
           <!-- </li> -->
@@ -70,7 +70,7 @@
               <div class="carousel-item active">
                 <img class="card-img"id="card-img1" src="{{ blog.image.url }}" alt="First slide">
                 <div class="carousel-caption" id="carousel-caption">
-                  <p id="caption-title"><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></p>
+                  <p id="caption-title"><a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a></p>
                   <p id="caption-text">by {{ blog.name }} | {{ blog.content|wordcount|time_estimate }} min read  </p>
                 </div>
               </div>
@@ -78,7 +78,7 @@
               <div class="carousel-item">
                 <img class="card-img"id="card-img1" src="{{ blog.image.url }}" alt="Second slide">
                 <div class="carousel-caption" id="carousel-caption">
-                  <p id="caption-title"><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></p>
+                  <p id="caption-title"><a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a></p>
                   <p id="caption-text">by {{ blog.name }} | {{ blog.content|wordcount|time_estimate }} min read  </p>
                 </div>
               </div>
@@ -120,7 +120,7 @@
               <img id="card-img31" src="{{ blog.image.url }}" alt="Card image cap">
             </div>
             <div id="card-body-text31">
-              <p  id="card-title31"><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></p>
+              <p  id="card-title31"><a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a></p>
               <p id="card-text31" >by {{ blog.name }} | {{ blog.content|wordcount|time_estimate }} min read</p>
             </div>
           </div>
@@ -174,7 +174,7 @@
               <p class="card-text"id="card-text22"> {{ blog.content|truncatewords:20 }}</p>
               {% endif %}
               <div>
-                <a href="{% url 'blog' blog.id %}"<button type="button" class="btn"><span id="readmore">READ MORE</span></button></a>
+                <a href="{% url 'blogs:blog' blog.id %}"<button type="button" class="btn"><span id="readmore">READ MORE</span></button></a>
               </div>
             </div>
       </div>

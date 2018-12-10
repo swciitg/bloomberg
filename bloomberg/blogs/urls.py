@@ -5,6 +5,7 @@ from django.conf import settings
 
 from . import views
 
+app_name='blogs'
 urlpatterns = [
     path('blogs/', views.index, name='index'),
     path('', RedirectView.as_view(url='/blogs/')),

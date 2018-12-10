@@ -2,7 +2,7 @@ import string
 import random
 import json
 import urllib
-import datetime 
+import datetime
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.db.models import F
@@ -59,8 +59,6 @@ def login(request):
 				name = users.name,
 				emailID = users.emailID,
 				logInTime = datetime.datetime.now(),
-				logOutTime = None,
-				isExpired = False,
 			)
 			if users.isAdmin:
 				return HttpResponseRedirect(reverse('blogs:admindash',args=()))

@@ -18,11 +18,11 @@
      <nav class="navbar navbar-default " id="navbar1" role="navigation">
       <div class="container-fluid">
           <div class="navbar-header">
-              <a class="navbar-brand" href="{% url 'index' %}"><h1 id="glorify">Glorify</h1></a>
+              <a class="navbar-brand" href="{% url 'blogs:index' %}"><h1 id="glorify">Glorify</h1></a>
           </div>
           <div class="navbar-text navbar-right" id="media"  >
-              <a href = "{% url 'index' %}"><button type="button" class="btn btn-outline-success">BACK TO HOME</button></a>
-              <a href = "{% url 'logout' %}"><button type="button" class="btn btn-outline-success">LOG OUT</button></a>
+              <a href = "{% url 'blogs:index' %}"><button type="button" class="btn btn-outline-success">BACK TO HOME</button></a>
+              <a href = "{% url 'blogs:logout' %}"><button type="button" class="btn btn-outline-success">LOG OUT</button></a>
           </div>
       </div>
     </nav>
@@ -65,7 +65,7 @@
   </div>
   <br/><br/>
     <div class="container"id="createPost">
-          <a href="{% url 'blogUpload' %}"><button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button></a>
+          <a href="{% url 'blogs:blogUpload' %}"><button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button></a>
     </div>
 
         <ul class="flex-container nowrap">
@@ -73,7 +73,7 @@
             <li class="flex-item">
                     <img class="card-img" src="{{ blog.image.url }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="{% url 'blog' blog.id %}"><p class="card-title">{{ blog.title }}</p></a>
+                        <a href="{% url 'blogs:blog' blog.id %}"><p class="card-title">{{ blog.title }}</p></a>
                         <p class="card-text"id="card-short-text" >by {{ user }} | {{ blog.createdAt.date }} </p>
                         {% if blog.content|wordcount <= 20 %}
                         <p class="card-text"id="card-long-text"> {{ blog.content }}</p>

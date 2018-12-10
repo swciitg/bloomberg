@@ -53,8 +53,8 @@ class Session(models.Model):
     userID = models.CharField(max_length=7)
     name = models.CharField(max_length = 50)
     emailID = models.EmailField(max_length = 50)
-    logInTime = UnixDateTimeField()
-    logOutTime = UnixDateTimeField()
+    logInTime = UnixDateTimeField(null=True , blank=True)
+    logOutTime = UnixDateTimeField(null=True , blank=False)
     isExpired = models.BooleanField(default = False)
 
     def __str__(self):
