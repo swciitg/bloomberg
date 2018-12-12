@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}
+<title>Admin</title>
+<link rel="stylesheet" href="{% static 'events/css/admindashevents.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-2.1.3.js" integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+<span class="bckg"></span>
+<header>
+  <h1>Dashboard</h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="{% url 'blogs:admindash' %}">All Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'blogs:pendingpost' %}">Pending Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'blogs:newpost' %}">New Posts</a>
+      </li>
+      <li>
+        <a href="{% url 'blogs:logout' %}">Log Out</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="title">
+    <h2>{{ page_title }}</h2>
+    <a href="{% url 'blogs:logout' %}">Hello {{ user }} !</a>
+
+  </div>
+
+  <article class="larg">
+    {% for event in events %}
+    <div>
+      <h3>{{ event.title }} <select>
+  <option value="Not Important">Not Important</option>
+  <option value="Urgent">Urgent</option>
+  <option value="Very Urgent">Very Urgent</option>
+  </select><label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></h3>
+
+      <p>Posted By : {{ event.postedBy }}</p>
+      <p> Event Title:  {{ event.title }}</p>
+      <p>Event Venue: {{ event.venue }}</p>
+      <p>Organizing Club : {{ event.organizingClub }}</p>
+      <p>Date:{{ event.date }} </p>
+      <p>Event Description :{{ event.description }}</p>
+
+    </div>
+    <!-- <div>
+      <h3>Poll 1 <label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></h3>
+      <p>Posted By</p><p>Options</p>
+    </div> -->
+  </article>
+</main>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  <script  src="{% static 'events/js/admindashevents.js' %}"></script>
+
+{% endblock %}
