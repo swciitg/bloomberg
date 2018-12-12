@@ -15,13 +15,13 @@
   <nav>
     <ul>
       <li>
-        <a href="{% url 'blogs:admindash' %}">All Posts</a>
+        <a href="{% url 'events:admindashevents' %}">All Events</a>
       </li>
       <li>
-        <a href="{% url 'blogs:pendingpost' %}">Pending Posts</a>
+        <a href="{% url 'events:pendingevent' %}">Pending Events</a>
       </li>
       <li>
-        <a href="{% url 'blogs:newpost' %}">New Posts</a>
+        <a href="{% url 'events:newevent' %}">New Events</a>
       </li>
       <li>
         <a href="{% url 'blogs:logout' %}">Log Out</a>
@@ -55,6 +55,7 @@
       <p>Event Description :{{ event.description }}</p>
 
     </div>
+    {% endfor %}
     <!-- <div>
       <h3>Poll 1 <label class="switch">
   <input type="checkbox">

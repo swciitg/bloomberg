@@ -6,7 +6,7 @@ from . import views
 
 app_name='events'
 urlpatterns = [
-    path('event/<int:pk>', views.event, name= 'event'),
+    # path('event/<int:pk>', views.event, name= 'event'),
     path('upload/', views.eventUpload, name='eventUpload'),
     path('eventlive/<int:pk>', views.eventlive, name= 'eventlive'),
     path('eventblock/<int:pk>', views.eventblock, name= 'eventblock'),
