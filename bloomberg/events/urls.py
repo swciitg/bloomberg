@@ -8,7 +8,10 @@ from . import views
 app_name='events'
 urlpatterns = [
     # path('event/<int:pk>', views.event, name= 'event'),
+<<<<<<< HEAD
     path('', RedirectView.as_view(url='upload/')),
+=======
+>>>>>>> 5e0a7cdb5dcf8f42c405b7f6552cf84e5fc74b29
     path('upload/', views.eventUpload, name='eventUpload'),
     path('eventlive/<int:pk>', views.eventlive, name= 'eventlive'),
     path('eventblock/<int:pk>', views.eventblock, name= 'eventblock'),

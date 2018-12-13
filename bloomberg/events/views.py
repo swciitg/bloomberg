@@ -120,7 +120,7 @@ def pendingevent(request):
 			'events' : events ,
 			'page_title' : page_title,
 		}
-		return render(request , 'blogs/admindashevents.html' , context)
+		return render(request , 'events/admindashevents.html' , context)
 
 def newevent(request):
 	if request.session.has_key('eid'):
@@ -138,6 +138,6 @@ def newevent(request):
 			'page_title' : page_title,
 		}
 
-		return render(request , 'blogs/admindashevents.html' , context)
+		return render(request , 'events/admindashevents.html' , context)
 
 	return HttpResponseRedirect(reverse('blogs:login'))
