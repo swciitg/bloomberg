@@ -15,13 +15,13 @@
   <nav>
     <ul>
       <li>
-        <a href="{% url 'blogs:admindash' %}">All Posts</a>
+        <a href="{% url 'events:admindashevents' %}">All Events</a>
       </li>
       <li>
-        <a href="{% url 'blogs:pendingpost' %}">Pending Posts</a>
+        <a href="{% url 'events:pendingevent' %}">Pending Events</a>
       </li>
       <li>
-        <a href="{% url 'blogs:newpost' %}">New Posts</a>
+        <a href="{% url 'events:newevent' %}">New Events</a>
       </li>
       <li>
         <a href="{% url 'blogs:logout' %}">Log Out</a>
@@ -61,6 +61,7 @@
   <span class="slider round"></h3>
       <p>Posted By</p><p>Options</p>
     </div> -->
+  {% endfor %}  
   </article>
 </main>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
