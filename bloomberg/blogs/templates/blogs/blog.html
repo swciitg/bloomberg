@@ -3,7 +3,7 @@
 
 {% block title %}
 <meta charset="utf-8">
-<title>Blog Design</title>
+<title>{{ blog.title }}</title>
 <link rel="stylesheet" type="text/css" href="{% static 'blogs/css/blog.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,7 +52,7 @@
 <label for="comment">Leave a Comment:</label>
 <textarea class="form-control" rows="5" id="comment" placeholder="A Facebook Plugin"></textarea>
 </div>
-<div class="more"><a href="{% url 'index' %}">MORE ARTICLES FOR YOU</a></div>
+<div class="more"><a href="{% url 'blogs:index' %}">MORE ARTICLES FOR YOU</a></div>
 
 </div>
 

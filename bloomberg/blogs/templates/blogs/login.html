@@ -10,7 +10,7 @@
 {% block content %}
 <div class="grid-container" id="grid-container-login">
     <p id="glorify-login">Login</p>
-    <form id="form" action="" method="post">
+    <form id="form" action="{% url 'blogs:login' %}" method="post">
       {% csrf_token %}
 
       {{ form.non_field_errors }}

@@ -22,6 +22,7 @@
           </div>
           <div class="navbar-text navbar-right" id="media"  >
               <a href = "{% url 'blogs:index' %}"><button type="button" class="btn btn-outline-success">BACK TO HOME</button></a>
+              <a href = "{% url 'events:eventUpload' %}"><button type="button" class="btn btn-outline-success">CREATE EVENT</button></a>
               <a href = "{% url 'blogs:logout' %}"><button type="button" class="btn btn-outline-success">LOG OUT</button></a>
           </div>
       </div>
@@ -65,7 +66,7 @@
   </div>
   <br/><br/>
     <div class="container"id="createPost">
-          <a href="{% url 'blogs:blogUpload' %}"><button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW POST</button></a>
+          <a href="{% url 'blogs:blogUpload' %}"><button type="button" class="btn btn-outline-success" id="createNewPost">CREATE NEW BLOG</button></a>
     </div>
 
         <ul class="flex-container nowrap">
