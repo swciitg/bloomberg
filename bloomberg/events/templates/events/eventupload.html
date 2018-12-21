@@ -2,17 +2,86 @@
 {% load static %}
 
 {% block title %}
-
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="{% static 'events/css/eventUpload.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
 
-<form action="{% url 'events:eventUpload' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-  {{ form.as_p }}
-    <!-- <p>
-        <input id="id_image" type="file" class="" name="image">
-    </p> -->
-    <input type="submit" value="Submit" />
-</form>
+      <div class="grid-container" id="grid-container-login">
+            <p id="glorify-login">Add Events</p>
+            <form id="form" enctype = "multipart/form-data" method="post" action="{% url 'events:eventUpload' %}">
+              {% csrf_token %}
+
+              {{ form.non_field_errors }}
+                <div class="form-group">
+                    {% if form.associatedClub.errors %}
+                    <ul>
+                      {% for error in form.associatedClub.errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <label for="{{ form.associatedClub.id_for_label }}" id="username-password">{{ form.associatedClub.label }}</label>
+                    {{ form.associatedClub }}
+                    <!-- <input type="text" class="form-control" placeholder="Associate club name" onfocus="this.placeholder=''" onblur="this.placeholder='Associate club name'"> -->
+                </div>
+                <div class="form-group">
+                  {% if form.title.errors %}
+                  <ul>
+                    {% for error in form.title.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                  <label for="{{ form.title.id_for_label }}" id="username-password">{{ form.title.label }}</label>
+                  {{ form.title }}
+                    <!-- <input type="url" class="form-control" placeholder="Any urls" onfocus="this.placeholder=''" onblur="this.placeholder='Any urls'"> -->
+                </div>
+                <div class="form-group">
+                    <!-- <label id="username-password">Date-Time</label>
+                    <input type="datetime-local" class="form-control"> -->
+                    {{ form.date }}
+                </div>
+                <div class="form-group">
+                  {% if form.venue.errors %}
+                  <ul>
+                    {% for error in form.venue.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                  <label for="{{ form.venue.id_for_label }}" id="username-password">{{ form.venue.label }}</label>
+                  {{ form.venue }}
+                    <!-- <input type="text" class="form-control" placeholder="Add Venue" onfocus="this.placeholder=''" onblur="this.placeholder='Add Venue'"> -->
+                </div>
+                <div class="form-group">
+                  {% if form.description.errors %}
+                  <ul>
+                    {% for error in form.description.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                  <label for="{{ form.description.id_for_label }}" id="username-password">{{ form.description.label }}</label>
+                  {{ form.description }}
+                    <!-- <textarea id="my-input" name="description" class="form-control" rows="3"></textarea> -->
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.image.id_for_label }}" id="username-password">{{ form.image.label }}</label>
+                    {{ form.image }}
+                    <!-- <input type="file" name="image" accept="image/*" class="form-control"> -->
+                </div>
+                <div style="padding-bottom :1rem;">
+                    <button type="submit" class="btn" id="login-button">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 
 {% endblock %}

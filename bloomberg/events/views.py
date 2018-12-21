@@ -21,14 +21,20 @@ def eventUpload (request):
             emailID = request.session['eid']
             user = UserDetail.objects.get(emailID = emailID)
             event_form = EventUploadForm(request.POST , request.FILES)
-            title=request.POST['title']
-            image=request.FILES['image']
-            venue=request.POST['venue']
-            organizingClub=request.POST['associatedClub']
-            description=request.POST['description']
-            date=request.POST['date']
+            # title=request.POST['title']
+            # image=request.FILES['image']
+            # venue=request.POST['venue']
+            # organizingClub=request.POST['associatedClub']
+            # description=request.POST['description']
+            # date=request.POST['date']
 
             if event_form.is_valid():
+                title=event_form.cleaned_data['title']
+                image=event_form.cleaned_data['image']
+                venue=event_form.cleaned_data['venue']
+                organizingClub=event_form.cleaned_data['associatedClub']
+                description=event_form.cleaned_data['description']
+                date=event_form.cleaned_data['date']
                 Event.objects.create(
                     postedBy=user.name,
                     title=title,
