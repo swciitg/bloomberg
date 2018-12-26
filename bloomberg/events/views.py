@@ -1,5 +1,5 @@
 import datetime
-from blogs.models import UserDetail
+from main.models import UserDetail
 from .forms import EventUploadForm
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect

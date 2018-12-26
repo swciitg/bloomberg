@@ -9,7 +9,8 @@ from django.db.models import F
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import LoginForm, SignUpForm, BlogUploadForm
 from passlib.hash import pbkdf2_sha256
-from .models import UserDetail , Blog , Comment , Session
+from main.models import UserDetail , Session
+from .models import Blog , Comment
 from django.urls import reverse
 from django.contrib import messages
 
