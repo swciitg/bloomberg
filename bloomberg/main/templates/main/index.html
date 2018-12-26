@@ -46,7 +46,7 @@
                   {% if user %}
                     <li class="navbar-item">
                       <p></p>
-                      <p style="color:white; margin:auto;">Hello {{ user }} &nbsp;</p>
+                      <p style="color:white; margin:auto;">&nbsp; &nbsp;<a href="{% url 'blogs:userdash' %}">Hello {{ user }}</a> &nbsp; &nbsp;</p>
                     </li>
                     <li class="navbar-item">
                       <a href="{% url 'main:logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
@@ -339,7 +339,7 @@
       <div class="grid-item" id="grid-item-footer">
         <p id="contact-footer">CONTACT US</p>
         <p id="email"><span id="email-footer">Email: </span><a href="#" id="email-link-footer">glorify@iitg.ac.in</a></p>
-        <a href="#" terget="_blank"><p id="about-us-footer" title="Meet Team Glorify" >About Us</p></a>
+        <a href="{% url 'main:about' %}" terget="_blank"><p id="about-us-footer" title="Meet Team Glorify" >About Us</p></a>
       </div>
     </div>
     <div id="footer-bootom">

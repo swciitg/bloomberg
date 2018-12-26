@@ -1,0 +1,74 @@
+  
+#about-us-flex-container {
+    padding: 0;
+    margin-left:10%;    
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-evenly;
+}  
+#about-us-flex-item {
+    margin-right:10%;
+    margin-top: 10px;
+    text-align: center;  
+     
+}
+#about-us-glorify{
+    text-align:center;
+    font-weight:1000;
+    font-size: 2.5rem;
+    font-family: serif;
+    margin-top: -1.5rem;
+}
+#about-us-btech{
+    margin-top: -1.3rem;
+    font-weight: 600;
+}
+#about-us-team{
+    margin-top:0.5rem;
+    text-align: center;
+    font-weight: 800;
+    font-size:2.2rem;
+    color:rgba(128, 0, 0, 0.705);
+}
+#about-us-img{
+    margin-bottom:10px;
+    height:180px;
+    width:180px;
+    border-radius:100px;
+    cursor: pointer;
+}
+#about-us-name{
+    font-weight: 800;
+    font-size: 1.8rem;
+    font-family: serif;
+    color:rgba(128,0,0,0.705);
+} 
+
+#footer-bootom{
+    height:3.11rem;
+    background-color: black;
+    color:rgb(212, 212, 212);
+}
+#footer-bootom-text{
+    text-align: center;
+    padding-top:10px;
+}
+ 
+#footer-bootom{
+    height:3.11rem;
+    background-color: black;
+    color:rgb(212, 212, 212);
+}
+#footer-bootom-text{
+    text-align: center;
+    padding-top:10px;
+}
+#glorify-footer{
+    color: white;
+    font-weight: 600;
+}
