@@ -24,7 +24,7 @@
         <a href="{% url 'blogs:newpost' %}">New Posts</a>
       </li>
       <li>
-        <a href="{% url 'blogs:logout' %}">Log Out</a>
+        <a href="{% url 'main:logout' %}">Log Out</a>
       </li>
     </ul>
   </nav>
@@ -32,7 +32,7 @@
 <main>
   <div class="title">
     <h2>{{ page_title }}</h2>
-    <a href="{% url 'blogs:logout' %}">Hello {{ user }} !</a>
+    <a href="{% url 'main:logout' %}">Hello {{ user }} !</a>
 
   </div>
 

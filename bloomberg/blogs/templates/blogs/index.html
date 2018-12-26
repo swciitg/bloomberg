@@ -33,12 +33,12 @@
                 <p style="color:white; margin:auto;">Hello {{ user }} &nbsp;</p>
               </li>
               <li class="navbar-item">
-                <a href="{% url 'blogs:logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
+                <a href="{% url 'main:logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
               </li>
             {% else %}
             <li class="navbar-item">
-              <a href = "{% url 'blogs:login' %}"><button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login">Log In</button></a>
-              <a href="{% url 'blogs:signup' %}"<button class="btn btn-info my-2" type="submit">Sign Up</button></a>
+              <a href = "{% url 'main:login' %}"><button class="btn btn-dark mr-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login">Log In</button></a>
+              <a href="{% url 'main:signup' %}"<button class="btn btn-info my-2" type="submit">Sign Up</button></a>
             </li>
             {% endif %}
           <!-- </li> -->
