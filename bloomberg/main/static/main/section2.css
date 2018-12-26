@@ -1,0 +1,97 @@
+/*Stylesheet for section*/
+.flex-container {
+    padding: 0;
+    margin-top: -2rem;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nowrap { 
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}  
+.flex-item { 
+    height:auto;
+    margin-top:1.6rem;
+    text-align: start;
+    border-radius: 7px;
+}
+#grid-container2 {
+    display: grid;
+    grid-gap: 1.7rem;
+    grid-template-columns:1fr 1fr;  
+}
+.item21 {
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 7px; 
+    background-color:white; 
+    height:auto;
+    border-bottom:1px solid rgba(196, 196, 196, 0.842);
+    border-left:1px solid rgba(212, 212, 212, 0.699); 
+    border-right:1px solid rgba(212, 212, 212, 0.699);  
+}
+.item22 {
+    grid-column:2;
+    grid-row: 1;
+    border-radius:7px;
+    background-color:white;
+    height:auto; 
+    border-bottom:1px solid rgba(196, 196, 196, 0.842);
+    border-left:1px solid rgba(212, 212, 212, 0.699);
+    border-right:1px solid rgba(212, 212, 212, 0.699);  
+}
+#card-img2{
+    height:13.3rem;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+}
+#card-title2{
+    margin-top:-0.5rem;
+    font-weight:900;
+    font-size: 1.02rem;
+    color: rgba(136, 250, 28, 0.932);
+}
+#card-text2{
+    margin-top:-0.5rem; 
+    font-size:14px;
+    opacity:0.7;
+}
+#card-text22{
+    margin-top:-0.5rem;
+    font-size:15px;
+    opacity:0.7;
+}
+#count{
+    margin-left:6.62rem;
+}
+#readmore{
+    font-size:15px;
+    font-weight: 600; 
+    opacity:0.5;
+    letter-spacing: -0.7px;  
+}
+ 
+@media screen and (max-width: 670px) {
+    #grid-container2{
+        grid-template-columns:1fr;
+        grid-gap: 1.4rem;
+    }
+    .item21 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .item22 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+ 

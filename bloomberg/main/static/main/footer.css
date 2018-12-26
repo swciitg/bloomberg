@@ -1,0 +1,40 @@
+#grid-container-footer{
+    display: grid;
+    background-color: rgb(51, 51, 51);
+}
+#grid-item-footer{
+    text-align: center;
+}
+#contact-footer{
+    font-weight: 800;
+    color:rgb(202, 202, 202);
+    padding-top: 3rem;
+}
+#email{
+    margin-top:-0.7rem;
+}
+#email-footer{
+    font-weight: 600;
+    color:white;
+}
+#about-us-footer{
+    color:rgba(255, 255, 255, 0.925);
+    font-weight: 600;
+}
+#email-link-footer{
+    font-size:15px;
+    color:white;
+}
+#footer-bootom{
+    height:3.11rem;
+    background-color: black;
+    color:rgb(212, 212, 212);
+}
+#footer-bootom-text{
+    text-align: center;
+    padding-top: 10px;
+}
+#glorify-footer{
+    color: white;
+    font-weight: 600;
+}

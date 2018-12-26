@@ -1,0 +1,249 @@
+#body{
+    padding-top: 75px; 
+    background-color: #ecf0f5;
+}
+#pop-up-background.active{
+    opacity:0.4;
+}
+ #pop-up-subscribe{
+    font-family: serif;
+    font-weight: 900;
+    font-size:2rem;
+    text-align:center;  
+}
+.close{
+    margin-right:0.5rem;
+    color: white;
+    margin-bottom:0.3rem;
+    font-size:20px;
+    font-weight:800;
+    font-family: serif;
+}
+#close{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    width:50%;
+    border-radius: 2px;
+    margin-top:0.8rem;
+    margin-bottom:0.5rem;
+    background-color:rgb(0, 89, 255);
+    color:white;
+    font-weight:600;  
+}
+#pop-up-text{
+    text-align:center;
+}
+#pop-up-email{
+    width:50%;
+    border-radius: 2px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+.popup-overlay{
+    visibility:hidden;
+    position: fixed; 
+    background:#911e26;
+    border:7px solid white;
+    width:44%;
+    left:28%;
+    margin-top:65px; 
+    color: #ffffff;
+}
+@media screen and (max-width:750px){
+    .popup-overlay{
+        width:90%;
+        left:5%;
+    }
+}
+
+.popup-overlay.active{
+    visibility:visible;
+    z-index:1;
+}
+  
+.popup-content {
+    visibility:hidden;
+}
+  
+.popup-content.active {
+    visibility:visible;
+}
+
+#glorify {
+    font-family: serif;
+    font-style: italic;
+    font-weight: bold;
+    color:white;
+}
+#login{
+    border:none;
+    color:white;
+    background-color:rgba(92, 92, 92, 0.37);
+}
+#login:hover{
+    background-color:yellow;
+    color:black;
+}
+#navbar1 .fa {
+    text-align: center;
+    text-decoration: none;
+    border-radius:10%;
+    padding:10px;
+    font-size:15px; 
+}    
+#navbar1 .fa-facebook {
+    background-color:rgba(78, 78, 78, 0.37);
+    color: white;
+    opacity:0.8;
+    font-size:18px;
+    padding-bottom:13px;
+    padding-top:13px;
+    padding-left:15px;
+    padding-right: 15px;
+}
+ #navbar1 .fa-facebook:hover {
+     
+    background: #3B5998;
+    color: white;
+    opacity:1;
+}
+ 
+#navbar1 .fa-twitter {
+    background-color:rgba(78, 78, 78,0.37);
+    opacity:0.8; 
+    color: white;
+    font-size:18px;
+    padding-bottom:13px;
+    padding-top:13px;
+    padding-left:13px;
+    padding-right: 13px;
+}
+#navbar1 .fa-twitter:hover {
+    background: #55ACEE;
+    color: white;
+    opacity:1;
+}
+#navbar-signup{
+    background-color:#47cf73;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight:600;
+    padding-left:17px;
+    padding-right:17px;
+    border:none; 
+    margin-right: 0.5rem;
+}
+#navbar-twitter{
+    margin-right: 5rem;
+}
+#login{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:18px;
+    padding-right:18px; 
+}
+#suscribe{
+    padding-top: 4px;
+    padding-bottom:4px;
+    padding-left:8px;
+    padding-right:18px;
+    border:2.5px solid rgba(92,92,92,0.37);
+    background-color:initial;
+    color: white;
+    margin-right: 0.45rem;
+} 
+#suscribe:hover{
+    color:#47cf73;
+}
+ 
+@media screen and (min-width:990px){
+    #navbar1{
+        height:4.05rem;
+        padding-left:5%;
+        padding-right:5%;
+        background: linear-gradient(to right, #161616ea ,#303030);
+    }
+    #navbar-signup{
+        background-color:#47cf73;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight:600;
+        padding-left:17px;
+        padding-right:17px;
+        border:none; 
+        margin-left:0.35rem;
+    }
+    #login{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left:18px;
+        padding-right:18px; 
+    }
+    #suscribe{
+        padding-top: 4px;
+        padding-bottom:4px;
+        padding-left:8px;
+        padding-right:18px;
+        border:2.5px solid rgba(92,92,92,0.37);
+        background-color:initial;
+        color: white;
+    } 
+    #suscribe:hover{
+        color:#47cf73;
+    }
+    #html-navbar{
+        margin-left: auto;
+    }
+}
+@media screen and (max-width:1200px){
+    #navbar1{
+        padding-left:3%;
+        padding-right: 3%; 
+    }
+}
+ 
+@media screen and (max-width:990px){
+    #body{
+        padding-top: 65px;
+    }
+    #navbar1{
+        padding-left:3%;
+        padding-right:3%;
+        background: linear-gradient(to right, #161616ea ,#303030);
+        height: 4.5rem;
+    }
+    #html-navbar{
+        background: linear-gradient(to right, #161616ea ,#303030);
+        width:100%;
+        margin-left: auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    #html-navbar-login{
+        margin-left:5%; 
+        margin-right:5%;
+        border-top:1px solid black;
+        width: 90%;
+    }
+    #html-navbar-signup{
+        margin-left:5%; 
+        margin-right:5%;
+        border-top:1px solid black;
+        width: 90%;
+    }
+    #html-navbar-icon{
+        margin-left:5%; 
+        margin-right:5%;
+        border-top:1px solid black;
+        width: 90%;
+    }
+    #html-navbar-subscribe{
+        margin-left:5%; 
+        margin-right:5%;
+        border-top:1px solid black;
+        width: 90%;
+    }
+}
+ 

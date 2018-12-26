@@ -1,0 +1,205 @@
+/*Stylesheet for section*/
+.carousel .carousel-control-prev-icon {
+    visibility: hidden; 
+}
+.carousel:hover .carousel-control-prev-icon {
+    visibility: visible;
+}
+
+.carousel .carousel-control-next-icon { 
+    visibility: hidden; 
+}
+.carousel:hover .carousel-control-next-icon { 
+    visibility: visible; 
+}
+
+ #caption-title{
+    font-weight: 600;
+    margin-bottom:0.1rem; 
+ }
+ #caption-text{
+    font-size:15px;
+    margin-bottom:0rem;
+ }
+.carousel-indicators li {  
+  top: 50%;
+  display: block;
+  background-color:white;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.carousel-indicators .active{
+    background-color:rgb(54, 54, 54);
+}
+#grid-container1 {
+    display: grid;
+    grid-gap: 1.7rem;
+    grid-template-columns:14fr 5fr;
+    padding-left: 5%;
+    padding-right: 5%; 
+}
+#grid-container11{
+    display: grid;
+    grid-gap: 1.7rem;
+    grid-template-columns:5fr 2fr;
+}
+#grid-container4 {
+    display: grid;
+    grid-gap: 1.7rem;
+    grid-template-columns:14fr 5fr;
+     
+    padding-left: 5%;
+    padding-right: 5%; 
+}
+.item41{
+    grid-column: 1;
+    margin-top:-2rem;
+}
+.item42{
+    grid-column: 2;
+}
+.item11 {
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 5px;    
+}
+#card-img1{
+    height:21rem;
+    border-radius:5px;
+}
+.item12{
+    grid-column:2;
+    grid-row: 1;
+    border-radius: 5px;
+    background-color:white;
+    border-bottom:1px solid rgba(212,212, 212, 0.699);  
+    border-left:1px solid rgba(212, 212, 212, 0.699); 
+    border-right:1px solid rgba(212, 212, 212, 0.699);
+}
+#pick-latest{
+    background-color:white;
+    color:#47cf73;
+    font-weight: 700;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left:1.2rem;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+}
+/*.item13{
+    background-color: white;
+    height: 21rem;
+}*/
+.item113{
+    background-color: white;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+    border-left:1px solid rgba(212, 212, 212, 0.699);
+    border-right:1px solid rgba(212, 212, 212, 0.699);
+    border-radius: 5px;
+}
+#pick {
+    background-color:white;
+    color:#47cf73;
+    font-weight: 700;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left:1.2rem;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+    border-left:1px solid rgba(212,212, 212, 0.699);
+    border-right:1px solid rgba(212,212, 212, 0.699);
+}
+#pick13 {
+    padding-top: 0.27rem;
+    padding-bottom: 0.37rem;
+    padding-left:1.2rem;
+    background-color:white;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+
+}
+#pick14{
+    padding-top: 0.45rem;
+    padding-bottom: 0.5rem;
+    padding-left:1.2rem;
+    background-color:white;
+    border-bottom:1px solid rgba(212, 212, 212, 0.699);
+}
+#pick13-events{
+    font-weight: 700;
+    color: rgb(204,0,255);
+    font-size: 20px;
+}
+#event{
+    margin-top:-0.36rem;
+}
+#pick13-latest{
+    font-size:16px;
+    color: rgba(71, 71, 71, 0.699);
+}
+#blank{
+    border-top-left-radius: 3px;
+    border-top-right-radius:3px;
+    background-color:#47cf73;
+    height:6px; 
+}
+#blank13{
+    border-top-left-radius: 3px;
+    border-top-right-radius:3px;
+    background-color:rgb(204, 0, 255);
+    height:6px; 
+} 
+
+@media screen and (max-width:1200px) {
+    #grid-container1{
+        grid-template-columns:1fr;
+        padding-left: 3%;
+        padding-right: 3%; 
+    }
+    .item11{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .item12 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    #grid-container4 {
+        grid-template-columns:1fr;
+        padding-left: 3%;
+        padding-right: 3%; 
+    }
+    .item41{
+        grid-column: 1;
+        grid-row:2;
+        margin-top:0rem;
+    }
+    .item42{
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
+@media screen and (max-width:750px)  {
+    #card-img1{
+        height:18rem;
+    }
+    #grid-container11{
+        grid-template-columns: 1fr;
+    }
+    .item111{
+        grid-column: 1;
+        grid-row:1;
+    }
+    .item113{
+        grid-column: 1;
+        grid-row:2;
+    }
+}
+@media screen and (max-width:600px) {
+    #card-img1{
+        height:15rem;
+    }
+}
+@media screen and (max-width:990px) {
+    #grid-container1{
+        margin-top:1rem;
+    }
+}
+ 

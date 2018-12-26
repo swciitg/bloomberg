@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Glorify-IITG</title> 
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link href="navbar.css" rel="stylesheet" />
+    <link href="section1.css" rel="stylesheet"/>
+    <link href="section2.css" rel="stylesheet"/>
+    <link href="section3.css" rel="stylesheet"/>
+    <link href="footer.css" rel="stylesheet"/>
+  </head>
+  <body id="body">
+      <!-- Pop-window -->
+      <div class="popup-overlay">
+        <div class="popup-content">
+          <p id="pop-up-subscribe">Join the Newsletter</p>
+          <p id="pop-up-text">Receive the latest content from The Glorify by subscribing to the newsletter.</p>
+          <input id="pop-up-email" class="form-control"aria-describedby="emailHelp" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Type your email'">
+          <button id="close" class="btn">Subscribe Now</button>
+          <button class="close" >No,thanks</button>
+        </div>
+      </div>
+    
+      <div id="pop-up-background">       
+        <nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar1">
+          <a class="navbar-brand" href="#"><h1 id="glorify">Glorify</h1></a>
+          <button class="navbar-toggler"id="navbartoggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" id="togglericon"></span>
+          </button>            
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+             
+            <ul class="navbar-nav" id="html-navbar">
+              <li class="navbar-item" id="html-navbar-subscribe">
+                <button class="btn my-2 "id="suscribe" type="submit" title="Subscribe Now"><i class="fa fa-bell" aria-hidden="true" style="color:rgb(189, 189, 189)"></i>Subscribe</button>
+                  <a href="#" class="fa fa-facebook mr-2  " title="Like on Facebook"></a>
+                  <a href="#" class="fa fa-twitter my-2 mr-1" id="nav-twitter" title="Follow on Twitter"></a>
+                <button class="btn my-2 " type="submit" title="Sign Up" id="navbar-signup">Sign Up</button>
+                <a href="login.html"><button class="btn my-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login" title="Log In">Log In</button></a>
+              </li>
+            </ul> 
+          </div>   
+        </nav>
+        <br/>
+        
+    <div class="grid-container" id="grid-container1">
+      <div class="grid-item item11">
+        <div class="grid-container" id="grid-container11">
+          <div class="grid-item item111">
+            <!--Carousel-->
+            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselIndicators" data-slide-to="4"></li>
+                <li data-target="#carouselIndicators" data-slide-to="5"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/fit/c/1400/420/1*apkZiVg_WrESunhqf3PGvQ.jpeg" alt="First slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/fit/c/1400/420/1*3PurQhKI1tef1SeVfLgxRQ.jpeg" alt="Second slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/focal/1400/420/56/42/1*X6zsDeKZcLkryXWFiuEXaA.jpeg" alt="Third slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/focal/1400/420/50/36/1*yLdhLLP8L35EOvrQJ4WRYA.jpeg" alt="Third slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/focal/1400/420/42/60/0*gkMobjD3M0-SuJS2" alt="Third slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img class="card-img"id="card-img1" src="https://miro.medium.com/focal/1400/420/54/53/1*uaUG6gfuu4RuXW-Xkmt3Nw.jpeg" alt="Third slide">
+                  <div class="carousel-caption" id="carousel-caption">
+                    <p id="caption-title">THE FORGOTTEN HISTORY OF OOP</h1>
+                    <p id="caption-text">by Mr Bond | 8 min read  </p>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>     
+          </div>
+          <div class="grid-item item113">
+            <div id="blank13"></div>
+            <p id="pick13"><span id="pick13-events">EVENTS</span> <span id="pick13-latest">Latest</span></p>
+            <div id="event"></div>
+          </div>
+        </div>
+      </div>
+      <!--Container for Latest pick-->
+      <div class="grid-item item12">
+        <div id="blank"></div>
+        <h5 id="pick-latest">LATEST ON GLORIFY</h5>
+        <div class="grid-container" id="grid-container3">
+          <div class="grid-item item31">
+            <div id="card-body-img3">
+              <img id="card-img31" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+            </div>
+            <div id="card-body-text31">
+              <p  id="card-title31">Midterm Review: GSTA</p>
+              <p id="card-text31" >by Mr Bond | 8 min read</p>
+            </div>
+          </div>
+          <div class="grid-item item32">
+              <div id="card-body-img3">
+                  <img id="card-img32" src="https://cdn-images-1.medium.com/focal/800/240/45/37/1*3TETAAWktv6agoZ07NmU5Q.jpeg" alt="Card image cap">      
+                </div>
+                <div id="card-body-text31">
+                  <p  id="card-title32">Midterm Review: GSTA</p>
+                  <p id="card-text32" >by Mr Bond | 8 min read</p>
+                </div>
+          </div>
+          <div class="grid-item item33">
+              <div id="card-body-img3">
+                  <img id="card-img32" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+                </div>
+                <div id="card-body-text31">
+                  <p  id="card-title32">Midterm Review: GSTA</p>
+                  <p id="card-text32" >by Mr Bond | 8 min read</p>
+                </div>
+          </div>
+          <div class="grid-item item34">
+              <div id="card-body-img3">
+                  <img id="card-img32" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+                </div>
+                <div id="card-body-text31">
+                  <p  id="card-title32">Midterm Review: GSTA</p>
+                  <p id="card-text32" >by Mr Bond | 8 min read</p>
+                </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <br/>
+    <div class="grid-container" id="grid-container4">
+      <div class="grid-item item41">
+          <div id="blank13"></div>
+          <p id="pick14"><span id="pick13-events">GLORIFY FEATURED STORIES </span> <span id="pick13-latest">All</span></p>
+          <!--flex container-->
+          <ul class="flex-container nowrap">
+              <li class="flex-item">
+                  <div class="grid-container" id="grid-container2">
+                      <div class="grid-item item21">
+                        <img class="card-img"id="card-img2" src="https://cdn-images-1.medium.com/max/800/1*rbqNo1KHoP2F_G-b-ds7hA.jpeg" alt="Card image cap">
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22"> Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="grid-item item22">
+                        <img class="card-img"id="card-img2" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22">Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>            
+              </li>
+              <li class="flex-item">
+                  <div class="grid-container" id="grid-container2">
+                      <div class="grid-item item21">
+                        <img class="card-img"id="card-img2" src="https://cdn-images-1.medium.com/max/800/1*rbqNo1KHoP2F_G-b-ds7hA.jpeg" alt="Card image cap">
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22"> Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="grid-item item22">
+                        <img class="card-img"id="card-img2" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22">Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>      
+              </li>
+              <li class="flex-item">
+                  <div class="grid-container" id="grid-container2">
+                      <div class="grid-item item21">
+                        <img class="card-img"id="card-img2" src="https://cdn-images-1.medium.com/max/800/1*rbqNo1KHoP2F_G-b-ds7hA.jpeg" alt="Card image cap">
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22"> Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="grid-item item22">
+                        <img class="card-img"id="card-img2" src=" https://cdn-images-1.medium.com/max/2000/1*Evk_RfShDA3dmw3BzLKMWQ.jpeg" alt="Card image cap">      
+                        <div class="card-body"> 
+                          <h1 class="card-title"id="card-title2">THE FORGOTTEN HISTORY OF OOP</h1>
+                          <p class="card-text"id="card-text2" >by Mr Bond | 8 min read  </p>
+                          <p class="card-text"id="card-text22">Alan Kay coined the term “Object Oriented Programming” in reference to the Smalltalk programming language...</p> 
+                          <div>
+                            <button type="button" class="btn"><span id="readmore">READ MORE</span></button>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>      
+              </li>
+              
+              <!-- 
+                  All other posts (container) will goes here same as upper three flex-box.
+              -->
+          </ul>
+           
+      </div>
+      <!--Container for Latest pick -->
+      <div class="grid-item item42">
+        <div id="blank"></div>
+        <h5 id="pick">POLL OF THE DAY</h5>
+        <div id="poll-react">
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="grid-container" id="grid-container-footer">
+      <div class="grid-item" id="grid-item-footer">
+        <p id="contact-footer">CONTACT US</p>
+        <p id="email"><span id="email-footer">Email: </span><a href="#" id="email-link-footer">glorify@iitg.ac.in</a></p>
+        <a href="about_us.html" terget="_blank"><p id="about-us-footer" title="Meet Team Glorify" >About Us</p></a>
+      </div> 
+    </div>
+    <div id="footer-bootom">
+      <p id="footer-bootom-text">Copyright © 2018 <a href="#" id="glorify-footer">Glorify | SWC, IIT Guwahati</a> </p>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script> 
+    <script defer src="navbar.js"></script>
+       
+  </body>
+</html>
