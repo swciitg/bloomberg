@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserDetail
+from main.models import UserDetail
 from passlib.hash import pbkdf2_sha256
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
