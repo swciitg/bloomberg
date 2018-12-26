@@ -70,7 +70,7 @@ def eventlive(request,pk):
             event.save()
             return HttpResponseRedirect(reverse('blogs:pendingpost'))
         else:
-            return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+            return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
         return HttpResponseRedirect(reverse('blogs:login'))
 
@@ -86,7 +86,7 @@ def eventblock(request,pk):
             event.save()
             return HttpResponseRedirect(reverse('blogs:pendingpost'))
         else:
-            return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+            return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
         return HttpResponseRedirect(reverse('blogs:login'))
 
@@ -95,9 +95,9 @@ def admindashevents (request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		events = Event.objects.all()
 		page_title = 'ALL EVENTS'
 		context = {
@@ -115,9 +115,9 @@ def pendingevent(request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		events = Event.objects.filter(approvedBy=None)
 
 		page_title='PENDING EVENTS'
@@ -133,9 +133,9 @@ def newevent(request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		page_title='NEW EVENTS'
 		events = Event.objects.all().order_by('-date')
 		context = {
