@@ -115,7 +115,7 @@ def index (request):
 		user = UserDetail.objects.get(emailID = emailID)
 
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
-	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:3]
+	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
 	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
 	email = 'glorify@iitg.ac.in'
 
