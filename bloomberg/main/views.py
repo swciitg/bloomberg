@@ -1,4 +1,12 @@
+import string
+import random
+import json
+import urllib
+import datetime
 from django.shortcuts import render
+from django.conf import settings
+from django.contrib import messages
+from passlib.hash import pbkdf2_sha256
 from .models import UserDetail, Session
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse

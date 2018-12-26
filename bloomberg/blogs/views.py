@@ -20,7 +20,7 @@ def userdash (request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
 		if not UserDetail.objects.filter(emailID__exact = emailID):
-			return HttpResponseRedirect(reverse('blogs:login'))
+			return HttpResponseRedirect(reverse('main:login'))
 		user = UserDetail.objects.get(emailID = emailID)
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
@@ -40,16 +40,16 @@ def userdash (request):
 		}
 		return render(request , 'blogs/userdash.html' , context)
 
-	return HttpResponseRedirect(reverse('blogs:login'))
+	return HttpResponseRedirect(reverse('main:login'))
 
 def admindash (request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		blogs = Blog.objects.all()
 		page_title = 'ALL POSTS'
 		context = {
@@ -60,7 +60,7 @@ def admindash (request):
 
 		return render(request , 'blogs/admindash.html' , context)
 
-	return HttpResponseRedirect(reverse('blogs:login'))
+	return HttpResponseRedirect(reverse('main:login'))
 
 
 def newpost(request):
@@ -68,9 +68,9 @@ def newpost(request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		page_title='NEW POSTS'
 		blogs = Blog.objects.all().order_by('-createdAt')
 		context = {
@@ -81,7 +81,7 @@ def newpost(request):
 
 		return render(request , 'blogs/admindash.html' , context)
 
-	return HttpResponseRedirect(reverse('blogs:login'))
+	return HttpResponseRedirect(reverse('main:login'))
 
 
 def blog(request , pk):
@@ -91,10 +91,10 @@ def blog(request , pk):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if not blog.isLive:
 			if not blog.authorID == user.userID:
-				return HttpResponseRedirect(reverse('blogs:index'))
+				return HttpResponseRedirect(reverse('main:index'))
 			else:
 				author = user
 				context = {
@@ -179,7 +179,7 @@ def blogUpload(request):
 			    # m.model_pic = form.cleaned_data['image']
 				return HttpResponse('blog upload success')
 		else:
-			return HttpResponseRedirect(reverse('blogs:login'))
+			return HttpResponseRedirect(reverse('main:login'))
 
 	else:
 		blog_form = BlogUploadForm();
@@ -201,9 +201,9 @@ def bloglive(request, pk):
 			blog.save()
 			return HttpResponseRedirect(reverse('blogs:pendingpost'))
 		else:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 	else:
-		return HttpResponseRedirect(reverse('blogs:login'))
+		return HttpResponseRedirect(reverse('main:login'))
 
 def blogblock(request, pk):
 	blog = get_object_or_404(Blog , pk=pk)
@@ -216,6 +216,6 @@ def blogblock(request, pk):
 			blog.save()
 			return HttpResponseRedirect(reverse('blogs:pendingpost'))
 		else:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 	else:
-		return HttpResponseRedirect(reverse('blogs:login'))
+		return HttpResponseRedirect(reverse('main:login'))
