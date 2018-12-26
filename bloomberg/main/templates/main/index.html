@@ -66,7 +66,7 @@
             <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 {% for blog in blog_featured_crousal %}
-                {% if forloop.counter==1 %}
+                {% if forloop.counter == 1 %}
                 <li data-target="#carouselIndicators" data-slide-to="{{ forloop.counter }}-1" class="active"></li>
                 {% else %}
                 <li data-target="#carouselIndicators" data-slide-to="{{ forloop.counter }}-1"></li>
@@ -79,7 +79,7 @@
               </ol>
               <div class="carousel-inner">
                 {% for blog in blog_featured_crousal %}
-                {% if forloop.counter==1 %}
+                {% if forloop.counter == 1 %}
                 <div class="carousel-item active">
                   <img class="card-img"id="card-img1" src="{{ blog.image.url }}" alt="First slide">
                   <div class="carousel-caption" id="carousel-caption">
@@ -204,7 +204,7 @@
           <!--flex container-->
           <ul class="flex-container nowrap">
             {% for blog in blog_featured %}
-            {% if forloop.counter%2==1 %}
+            {% if forloop.counter%2 == 1 %}
               <li class="flex-item">
                   <div class="grid-container" id="grid-container2">
                       <div class="grid-item item21">
