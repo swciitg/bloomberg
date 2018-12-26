@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from . import models
+from .models import UserDetail, Session
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from blogs.models import Blog
+from .forms import LoginForm, SignUpForm
 # Create your views here.
 
 def login(request):
@@ -103,23 +105,8 @@ def logout(request):
 	return HttpResponseRedirect(reverse('main:index',args=()))
 
 
-def pendingpost(request):
-	if request.session.has_key('eid'):
-		emailID = request.session['eid']
-		user = UserDetail.objects.get(emailID = emailID)
-		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('main:permissiondenied'))
-		if user.isBlocked:
-			return HttpResponseRedirect(reverse('main':permissiondenied'))
-		blogs = Blog.objects.filter(approvedBy=None)
-		print(blogs)
-		page_title='PENDING POSTS'
-		context = {
-			'user' : user ,
-			'blogs' : blogs ,
-			'page_title' : page_title,
-		}
-		return render(request , 'blogs/admindash.html' , context)
+def permissiondenied(request):
+	return render(request, 'main/permdenied.html')
 
 def index (request):
 	user = ''

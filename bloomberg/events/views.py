@@ -47,7 +47,7 @@ def eventUpload (request):
 
                 return HttpResponse('Event upload success')
         else:
-            return HttpResponseRedirect(reverse('blogs:login'))
+            return HttpResponseRedirect(reverse('main:login'))
 
     else:
         event_form=EventUploadForm()
@@ -72,7 +72,7 @@ def eventlive(request,pk):
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
-        return HttpResponseRedirect(reverse('blogs:login'))
+        return HttpResponseRedirect(reverse('main:login'))
 
 def eventblock(request,pk):
     event=get_object_or_404(Event, pk=pk)
@@ -88,7 +88,7 @@ def eventblock(request,pk):
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
-        return HttpResponseRedirect(reverse('blogs:login'))
+        return HttpResponseRedirect(reverse('main:login'))
 
 def admindashevents (request):
 	if request.session.has_key('eid'):
@@ -108,7 +108,7 @@ def admindashevents (request):
 
 		return render(request , 'events/admindashevents.html' , context)
 
-	return HttpResponseRedirect(reverse('blogs:login'))
+	return HttpResponseRedirect(reverse('main:login'))
 
 def pendingevent(request):
 	if request.session.has_key('eid'):
@@ -146,4 +146,4 @@ def newevent(request):
 
 		return render(request , 'events/admindashevents.html' , context)
 
-	return HttpResponseRedirect(reverse('blogs:login'))
+	return HttpResponseRedirect(reverse('main:login'))

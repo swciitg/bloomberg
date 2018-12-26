@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.db.models import F
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import LoginForm, SignUpForm, BlogUploadForm
+from .forms import BlogUploadForm
 from passlib.hash import pbkdf2_sha256
 from main.models import UserDetail , Session
 from .models import Blog , Comment
@@ -129,8 +129,23 @@ def blog(request , pk):
 
 	return render(request, 'blogs/blog.html' , context)
 
-def permissiondenied(request):
-	return render(request, 'blogs/permdenied.html')
+def pendingpost(request):
+	if request.session.has_key('eid'):
+		emailID = request.session['eid']
+		user = UserDetail.objects.get(emailID = emailID)
+		if not user.isAdmin:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		if user.isBlocked:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		blogs = Blog.objects.filter(approvedBy=None)
+		print(blogs)
+		page_title='PENDING POSTS'
+		context = {
+			'user' : user ,
+			'blogs' : blogs ,
+			'page_title' : page_title,
+		}
+		return render(request , 'blogs/admindash.html' , context)
 
 def blogUpload(request):
 	if request.method == 'POST':

@@ -7,7 +7,6 @@ from . import views
 
 app_name='blogs'
 urlpatterns = [
-    path('', views.index, name='index'),
     path('admin/',views.admindash, name= 'admindash'),
     path('admin/pending/',views.pendingpost, name= 'pendingpost'),
     path('admin/new/',views.newpost, name= 'newpost'),
