@@ -16,28 +16,6 @@ from django.contrib import messages
 
 # Create your views here.
 
-def index (request):
-	user = ''
-	if request.session.has_key('eid'):
-		emailID = request.session['eid']
-		user = UserDetail.objects.get(emailID = emailID)
-
-	blog_latest = Blog.objects.filter(isLive = True)[:4]
-	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:3]
-	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
-	email = 'glorify@iitg.ac.in'
-
-
-	context ={
-		'user' : user,
-		'blog_latest' : blog_latest,
-		'blog_featured_crousal' : blog_featured_crousal,
-		'blog_featured' : blog_featured,
-		'email' : email,
-	}
-
-	return render(request , 'blogs/index.html' , context)
-
 def userdash (request):
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import views
+from . import models
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
@@ -37,11 +37,11 @@ def login(request):
 		'form' : login_form ,
 	}
 
-	return render(request , 'blogs/login.html' , context)
+	return render(request , 'main/login.html' , context)
 
 def signup(request):
 	if request.session.has_key('eid'):
-		 return HttpResponseRedirect(reverse('blogs:index',args=()))
+		 return HttpResponseRedirect(reverse('main:index',args=()))
 
 
 	if request.method == 'POST':
@@ -85,7 +85,7 @@ def signup(request):
 			else:
 			    messages.error(request, 'Invalid reCAPTCHA. Please try again.')
 
-			return HttpResponseRedirect(reverse('blogs:index',args=()))
+			return HttpResponseRedirect(reverse('main:index',args=()))
 	else:
 		signup_form = SignUpForm();
 
@@ -93,14 +93,14 @@ def signup(request):
 		'form' : signup_form ,
 	}
 
-	return render(request , 'blogs/signup.html' , context)
+	return render(request , 'main/signup.html' , context)
 
 def logout(request):
 	try:
 		del request.session['eid']
 	except KeyError:
 		pass
-	return HttpResponseRedirect(reverse('blogs:index',args=()))
+	return HttpResponseRedirect(reverse('main:index',args=()))
 
 
 def pendingpost(request):
@@ -108,9 +108,9 @@ def pendingpost(request):
 		emailID = request.session['eid']
 		user = UserDetail.objects.get(emailID = emailID)
 		if not user.isAdmin:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
-			return HttpResponseRedirect(reverse('blogs:permissiondenied'))
+			return HttpResponseRedirect(reverse('main':permissiondenied'))
 		blogs = Blog.objects.filter(approvedBy=None)
 		print(blogs)
 		page_title='PENDING POSTS'
@@ -120,3 +120,25 @@ def pendingpost(request):
 			'page_title' : page_title,
 		}
 		return render(request , 'blogs/admindash.html' , context)
+
+def index (request):
+	user = ''
+	if request.session.has_key('eid'):
+		emailID = request.session['eid']
+		user = UserDetail.objects.get(emailID = emailID)
+
+	blog_latest = Blog.objects.filter(isLive = True)[:4]
+	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:3]
+	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
+	email = 'glorify@iitg.ac.in'
+
+
+	context ={
+		'user' : user,
+		'blog_latest' : blog_latest,
+		'blog_featured_crousal' : blog_featured_crousal,
+		'blog_featured' : blog_featured,
+		'email' : email,
+	}
+
+	return render(request , 'main/index.html' , context)
