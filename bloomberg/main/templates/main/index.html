@@ -206,28 +206,8 @@
           <!--flex container-->
           <ul class="flex-container nowrap">
             {% for blog in blog_featured %}
-            {% if forloop.counter%2 == 1 %}
-              <li class="flex-item">
+            {% if forloop.counter|divisibleby:2 %}
                   <div class="grid-container" id="grid-container2">
-                      <div class="grid-item item21">
-                        <img class="card-img"id="card-img2" src="{{ blog.image.url }}" alt="Card image cap">
-                        <div class="card-body">
-                          <h1 class="card-title"id="card-title2">{{ blog.title }}</h1>
-                          <p class="card-text"id="card-text2" >by {{ blog.name }} | {{ blog.content|wordcount|time_estimate }} min read </p>
-                          {% if blog.content|wordcount <= 20 %}
-                          <p class="card-text"id="card-text22"> {{ blog.content }}</p>
-                          {% else %}
-                          <p class="card-text"id="card-text22"> {{ blog.content|truncatewords:20 }}</p>
-                          {% endif %}
-                          <div>
-                            <a href="{% url 'blogs:blog' blog.id %}"><button type="button" class="btn"><span id="readmore">READ MORE</span></button></a>
-                          </div>
-                        </div>
-                      </div>
-                {% if forloop.last %}
-                </li>
-                {% endif %}
-                {% else %}
                       <div class="grid-item item22">
                         <img class="card-img"id="card-img2" src="{{ blog.image.url }}" alt="Card image cap">
                         <div class="card-body">
@@ -242,8 +222,28 @@
                             <a href="{% url 'blogs:blog' blog.id %}"><button type="button" class="btn"><span id="readmore">READ MORE</span></button></a>
                           </div>
                         </div>
+                      </div>
+
+                {% else %}
+                  <li class="flex-item">
+                      <div class="grid-item item21">
+                        <img class="card-img"id="card-img2" src="{{ blog.image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                          <h1 class="card-title"id="card-title2">{{ blog.title }}</h1>
+                          <p class="card-text"id="card-text2" >by {{ blog.name }} | {{ blog.content|wordcount|time_estimate }} min read </p>
+                          {% if blog.content|wordcount <= 20 %}
+                          <p class="card-text"id="card-text22"> {{ blog.content }}</p>
+                          {% else %}
+                          <p class="card-text"id="card-text22"> {{ blog.content|truncatewords:20 }}</p>
+                          {% endif %}
+                          <div>
+                            <a href="{% url 'blogs:blog' blog.id %}"><button type="button" class="btn"><span id="readmore">READ MORE</span></button></a>
+                          </div>
+                        </div>
                     </div>
-              </li>
+                  {% if forloop.last %}
+                  </li>
+                  {% endif %}
               {% endif %}
               {% endfor %}
               <!-- <li class="flex-item">
