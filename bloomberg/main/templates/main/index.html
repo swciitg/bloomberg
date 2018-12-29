@@ -17,7 +17,7 @@
     <link href="{% static 'main/css/footer.css' %}" rel="stylesheet"/>
 {% endblock %}
 
-{% block content %}
+{% block header %}
       <!-- Pop-window -->
 
       <div class="popup-overlay">
@@ -61,7 +61,9 @@
         </nav>
         <br/>
         <br/><br/><br/>
+{% endblock %}
 
+{% block content %}
     <div class="grid-container" id="grid-container1">
       <div class="grid-item item11">
         <div class="grid-container" id="grid-container11">
