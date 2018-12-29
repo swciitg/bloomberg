@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
 from .models import UserDetail, Session
+from events.models import Event
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from blogs.models import Blog
@@ -128,11 +129,12 @@ def index (request):
 		try:
 			user = UserDetail.objects.get(emailID = emailID)
 		except UserDetail.DoesNotExist:
-			HttpResponseRedirect(reverse('main:logout'))	
+			HttpResponseRedirect(reverse('main:logout'))
 
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
 	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
+	events_latest=Event.objects.filter(isLive =True)[:4]
 	email = 'glorify@iitg.ac.in'
 
 
@@ -142,6 +144,7 @@ def index (request):
 		'blog_featured_crousal' : blog_featured_crousal,
 		'blog_featured' : blog_featured,
 		'email' : email,
+		'events_latest' : events_latest,
 	}
 
 	return render(request , 'main/index.html' , context)
