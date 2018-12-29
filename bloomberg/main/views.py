@@ -131,10 +131,13 @@ def index (request):
 		except UserDetail.DoesNotExist:
 			HttpResponseRedirect(reverse('main:logout'))
 
+	date_today=datetime.datetime.now()
+	print(date_today.date())
+
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
 	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
-	events_latest=Event.objects.filter(isLive =True)[:4]
+	events_latest=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')[:4]
 	email = 'glorify@iitg.ac.in'
 
 
