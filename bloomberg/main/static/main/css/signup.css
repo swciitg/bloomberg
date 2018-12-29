@@ -171,7 +171,8 @@ button:focus {
   flex-flow: column;
   box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  height: 678px;
+  /* height: 678px; */
+  height: 725px;
   width: 360px;
   background: #fff;
   background: url('https://images.pexels.com/photos/728401/pexels-photo-728401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
@@ -184,7 +185,8 @@ background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, F
 
   opacity: 0.85;
   filter: alpha(opacity=85);
-  height: 678px;
+  /* height: 678px; */
+  height: 725px;
   position: absolute;
   width: 360px;
   z-index: 1;
