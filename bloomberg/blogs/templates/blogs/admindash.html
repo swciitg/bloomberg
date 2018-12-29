@@ -35,7 +35,11 @@
     <a href="{% url 'main:logout' %}">Hello {{ user }} !</a>
 
   </div>
+  <div class="navigation">
+    <a href="{% url 'blogs:admindash' %}"><button class="button button2">Blogs</button></a> <a href="{% url 'events:admindashevents' %}"><button class="button button2">Events</button></a> <a href="{% url 'blogs:admindash' %}"><button class="button button2">Polls</button></a>
+  </div>
 
+  <hr>
   <article class="larg">
     {% for blog in blogs  %}
     <div>
