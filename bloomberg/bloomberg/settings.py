@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blogs.apps.BlogsConfig',
     'events.apps.EventsConfig',
     'main.apps.MainConfig',
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [

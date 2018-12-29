@@ -9,6 +9,7 @@ from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
 from .models import UserDetail, Session
 from events.models import Event
+from polls.models import Question, Choice
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from blogs.models import Blog
@@ -138,6 +139,8 @@ def index (request):
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
 	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
 	events_latest=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')[:4]
+
+	latest_question_list=Question.objects.filter(isLive =True).order_by('-createdAt')[:1]
 	email = 'glorify@iitg.ac.in'
 
 

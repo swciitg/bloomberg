@@ -342,6 +342,27 @@
         <div id="blank"></div>
         <h5 id="pick">POLL OF THE DAY</h5>
         <div id="poll-react">
+          {% if latest_question_list %}
+          <ul>
+                        <!-- {% if error_message  %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %} -->
+              {% for question in latest_question_list %}
+                <form action="{% url 'polls:vote' question.id %}" method="post">
+                {% csrf_token %}
+                {% for choice in question.choice_set.all %}
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
+                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                    {{ choice.votes }} vote{{ choice.votes|pluralize }}<br>
+                {% endfor %}
+                <input type="submit" value="Vote">
+                </form>
+              {% endfor %}
+          </ul>
+          {% else %}
+              <p> No polls available</p>
+          {% endif %}
+
         </div>
       </div>
     </div>
