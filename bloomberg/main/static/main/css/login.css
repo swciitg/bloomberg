@@ -1,5 +1,5 @@
-#body{
-    background: linear-gradient(to right,#0f92cf,rgb(190, 90, 230),rgb(235, 33, 241));  
+body{
+    background: linear-gradient(to right,#0f92cf,rgb(190, 90, 230),rgb(235, 33, 241));
 }
 #grid-container-login{
     display:grid;
@@ -11,7 +11,7 @@
 }
 #glorify-login{
     font-weight:1000;
-    opacity:0.95; 
+    opacity:0.95;
     text-align:center;
     font-size:2.25rem;
     padding-top:4rem;
@@ -27,7 +27,7 @@
 #forgot-password{
     font-size:15px;
     text-align:end;
-    color:rgb(136, 136, 136);    
+    color:rgb(136, 136, 136);
 }
 #forgot-password :hover{
     color:rgb(195, 9, 219);
@@ -42,7 +42,7 @@
 #sign-up{
     text-align: center;
     color:rgb(105, 105, 105);
-     
+
 }
 #sign-up :hover{
     color:rgb(195, 9, 219);
