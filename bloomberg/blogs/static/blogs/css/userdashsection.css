@@ -26,7 +26,7 @@
     line-height: 25px;
 }
 #count{
-    margin-left: 74%;
+    float:right;
 }
 #responses{
     font-size:15px;
