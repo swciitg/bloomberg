@@ -68,7 +68,7 @@ def eventlive(request,pk):
             event.isLive = True
             event.approvedBy=user.name
             event.save()
-            return HttpResponseRedirect(reverse('blogs:pendingpost'))
+            return HttpResponseRedirect(reverse('event:pendingevent'))
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
@@ -84,7 +84,7 @@ def eventblock(request,pk):
             event.isLive = False
             event.approvedBy=user.name
             event.save()
-            return HttpResponseRedirect(reverse('blogs:pendingpost'))
+            return HttpResponseRedirect(reverse('event:pendingevent'))
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
