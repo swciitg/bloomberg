@@ -151,6 +151,7 @@ def index (request):
 		'blog_featured' : blog_featured,
 		'email' : email,
 		'events_latest' : events_latest,
+		'latest_question_list' : latest_question_list,
 	}
 
 	return render(request , 'main/index.html' , context)

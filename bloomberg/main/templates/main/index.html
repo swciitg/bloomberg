@@ -348,6 +348,7 @@
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %} -->
               {% for question in latest_question_list %}
+                <h4>{{ question.question_text }}<h4>
                 <form action="{% url 'polls:vote' question.id %}" method="post">
                 {% csrf_token %}
                 {% for choice in question.choice_set.all %}
