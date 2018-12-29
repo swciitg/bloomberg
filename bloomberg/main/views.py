@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
 from .models import UserDetail, Session
+from events.models import Event
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from blogs.models import Blog
@@ -16,7 +17,12 @@ from .forms import LoginForm, SignUpForm
 
 def login(request):
 	if request.session.has_key('eid'):
-		 return HttpResponseRedirect(reverse('main:index',args=()))
+		email=request.session['eid']
+		try:
+			user=UserDetail.objects.get(emailID = email)
+		except UserDetail.DoesNotExist:
+			return HttpResponseRedirect(reverse('main:logout'))
+		return HttpResponseRedirect(reverse('main:index',args=()))
 
 	if request.method == 'POST':
 		login_form = LoginForm(request.POST)
@@ -120,11 +126,15 @@ def index (request):
 	user = ''
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
-		user = UserDetail.objects.get(emailID = emailID)
+		try:
+			user = UserDetail.objects.get(emailID = emailID)
+		except UserDetail.DoesNotExist:
+			HttpResponseRedirect(reverse('main:logout'))
 
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
 	blog_featured =Blog.objects.filter(isLive = True).order_by('-views')[:6]
+	events_latest=Event.objects.filter(isLive =True)[:4]
 	email = 'glorify@iitg.ac.in'
 
 
@@ -134,9 +144,10 @@ def index (request):
 		'blog_featured_crousal' : blog_featured_crousal,
 		'blog_featured' : blog_featured,
 		'email' : email,
+		'events_latest' : events_latest,
 	}
 
 	return render(request , 'main/index.html' , context)
 
 def about(request):
-	return render(request , 'main/about_us.html')	
+	return render(request , 'main/about_us.html')

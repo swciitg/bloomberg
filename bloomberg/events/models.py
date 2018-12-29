@@ -17,7 +17,7 @@ class Event(models.Model):
     approvedBy = models.CharField(max_length=7 , null = True , blank = True)
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['date']
 
     def __str__(self):
         return self.title

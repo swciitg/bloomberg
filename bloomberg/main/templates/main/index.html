@@ -150,7 +150,17 @@
           <div class="grid-item item113">
             <div id="blank13"></div>
             <p id="pick13"><span id="pick13-events">EVENTS</span> <span id="pick13-latest">Latest</span></p>
-            <div id="event"></div>
+            {% for event in events_latest %}
+            <div class="grid-item item31{{ forloop.counter }}">
+              <!-- <div id="card-body-img3">
+                <img id="card-img31" src="{{ event.image.url }}" alt="Card image cap">
+              </div> -->
+              <div id="card-body-text3">
+                <p  id="card-title31">{{ event.title }}</p>
+                <p id="card-text31" ><strong>Date: </strong>{{ event.date }} &nbsp;|&nbsp; <strong>Venue: </strong>{{ event.venue }}</p>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -200,6 +210,8 @@
         </div>
       </div>
     </div>
+    <br/>
+    <br/>
     <br/>
     <div class="grid-container" id="grid-container4">
       <div class="grid-item item41">
