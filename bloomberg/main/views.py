@@ -16,7 +16,12 @@ from .forms import LoginForm, SignUpForm
 
 def login(request):
 	if request.session.has_key('eid'):
-		 return HttpResponseRedirect(reverse('main:index',args=()))
+		email=request.session['eid']
+		try:
+			user=UserDetail.objects.get(emailID = email)
+		except UserDetail.DoesNotExist:
+			return HttpResponseRedirect(reverse('main:logout'))
+		return HttpResponseRedirect(reverse('main:index',args=()))
 
 	if request.method == 'POST':
 		login_form = LoginForm(request.POST)
@@ -120,7 +125,10 @@ def index (request):
 	user = ''
 	if request.session.has_key('eid'):
 		emailID = request.session['eid']
-		user = UserDetail.objects.get(emailID = emailID)
+		try:
+			user = UserDetail.objects.get(emailID = emailID)
+		except UserDetail.DoesNotExist:
+			HttpResponseRedirect(reverse('main:logout'))	
 
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
@@ -139,4 +147,4 @@ def index (request):
 	return render(request , 'main/index.html' , context)
 
 def about(request):
-	return render(request , 'main/about_us.html')	
+	return render(request , 'main/about_us.html')
