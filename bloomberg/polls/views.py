@@ -14,7 +14,15 @@ def vote(request, question_id):
 
         return HttpResponseRedirect(reverse('main:index'))
     else:
-        selected_choice.votes = F('votes') + 1
-        selected_choice.save()
+        emailID = request.session['eid']
+        string=str(question_id)
+        string=string+emailID
+        print(string)
+        if request.session.has_key(string):
+            pass
+        else:
+            request.session[string]=selected_choice.id
+            selected_choice.votes = F('votes') + 1
+            selected_choice.save()
 
         return HttpResponseRedirect(reverse('main:index'))
