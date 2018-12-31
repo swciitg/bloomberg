@@ -5,4 +5,5 @@ app_name = 'polls'
 
 urlpatterns = [
 	path('<int:question_id>/vote/', views.vote, name='vote'),
+	path('upload/',views.polladdform, name='polladdform')
 ]
