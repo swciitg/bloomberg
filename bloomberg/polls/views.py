@@ -16,7 +16,9 @@ def vote(request, question_id):
 
         return HttpResponseRedirect(reverse('main:index'))
     else:
-        emailID = request.session['eid']
+        emailID=''
+        if request.session.has_key('eid'):
+            emailID = request.session['eid']
         string=str(question_id)
         string=string+emailID
         print(string)
