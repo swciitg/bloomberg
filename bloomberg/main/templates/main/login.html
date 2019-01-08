@@ -5,6 +5,28 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"  href="{% static 'main/css/login.css' %}">
+<link href="{% static 'main/css/navbar.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar1">
+  <a class="navbar-brand" href="{% url 'main:index' %}"><h1 id="glorify">Glorify</h1></a>
+  <button class="navbar-toggler"id="navbartoggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" id="togglericon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+
+    <ul class="navbar-nav" id="html-navbar">
+      <li class="navbar-item" id="html-navbar-subscribe">
+        <button class="btn my-2 "id="suscribe" type="submit" title="Subscribe Now"><i class="fa fa-bell" aria-hidden="true" style="color:rgb(189, 189, 189)"></i>Subscribe</button>
+          <a href="#" class="fa fa-facebook mr-2  " title="Like on Facebook"></a>
+          <a href="#" class="fa fa-twitter my-2 mr-1" id="nav-twitter" title="Follow on Twitter"></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br/>
+<br/><br/><br/>
 {% endblock %}
 
 {% block content %}
