@@ -341,6 +341,37 @@
       <div class="grid-item item42">
         <div id="blank"></div>
         <h5 id="pick">POLL OF THE DAY</h5>
+        <div class="container-poll">
+          {% if latest_question_list %}
+          <ul>
+          {% for question in latest_question_list %}
+              <!-- <p class="react-poll-clubname">Coding 101 - IIT Guwahati</p> -->
+              <!-- <p class="react-poll-date">created a poll. | 6 June 2018</p> -->
+              <p class="react-poll-textaboutpoll">{{ question.question_text }}</p>
+              <form action="{% url 'polls:vote' question.id %}" method="post">
+              {% csrf_token %}
+              {% for choice in question.choice_set.all %}
+              <div class="react-poll-field">
+                  <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
+                 <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
+             </div>
+             {% endfor %}
+             <input type="submit" value="Vote">
+             </form>
+         {% endfor %}
+         </ul>
+         {% else %}
+             <p> No polls available</p>
+         {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+
+      <div class="grid-item item42">
+        <div id="blank"></div>
+        <h5 id="pick">POLL OF THE DAY</h5>
         <div id="poll-react">
           {% if latest_question_list %}
           <ul>
