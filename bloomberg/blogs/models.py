@@ -17,7 +17,7 @@ class Blog(models.Model):
     lastUpdated = UnixDateTimeField(auto_now=True)
     createdAt = UnixDateTimeField(auto_now_add=True)
     content = models.TextField()
-    approvedBy = models.CharField(max_length=7 , null = True , blank = True)
+    approvedBy = models.CharField(max_length=50 , null = True , blank = True)
     topic = models.CharField(max_length=100)
 
     class Meta:

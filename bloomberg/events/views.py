@@ -147,3 +147,11 @@ def newevent(request):
 		return render(request , 'events/admindashevents.html' , context)
 
 	return HttpResponseRedirect(reverse('main:login'))
+
+def eventsall(request):
+    date_today=datetime.datetime.now()
+    eventsall=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')
+    context = {
+        'eventsall' : eventsall,
+    }
+    return render(request, 'events/eventsall.html',context)

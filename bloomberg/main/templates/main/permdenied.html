@@ -1,2 +1,41 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+  <link href="{% static 'main/css/navbar.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar1">
+  <a class="navbar-brand" href="{% url 'main:index' %}"><h1 id="glorify">Glorify</h1></a>
+  <button class="navbar-toggler"id="navbartoggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" id="togglericon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+
+    <ul class="navbar-nav" id="html-navbar">
+      <li class="navbar-item" id="html-navbar-subscribe">
+        <button class="btn my-2 "id="suscribe" type="submit" title="Subscribe Now"><i class="fa fa-bell" aria-hidden="true" style="color:rgb(189, 189, 189)"></i>Subscribe</button>
+          <a href="#" class="fa fa-facebook mr-2  " title="Like on Facebook"></a>
+          <a href="#" class="fa fa-twitter my-2 mr-1" id="nav-twitter" title="Follow on Twitter"></a>
+          {% if user %}
+            <li class="navbar-item">
+              <p></p>
+              <p style="color:white; margin:auto;">&nbsp; &nbsp;<a href="{% url 'blogs:userdash' %}">Hello {{ user }}</a> &nbsp; &nbsp;</p>
+            </li>
+            <li class="navbar-item">
+              <a href="{% url 'main:logout' %}"<button class="btn btn-info my-2" type="submit">Logout</button></a>
+            </li>
+          {% else %}
+        <a href="{% url 'main:signup' %}"><button class="btn my-2 " type="submit" title="Sign Up" id="navbar-signup">Sign Up</button></a>
+        <a href="{% url 'main:login' %}"><button class="btn my-2" data-toggle="modal" data-target="#popUpWindow" type="submit" id="login" title="Log In">Log In</button></a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+</nav>
+<br/>
+<br/><br/><br/>
+{% endblock %}
+
 <center><strong><h1>Permission Denied</h1></strong>
 <h2><a href="{% url 'main:index' %}">Goto Home</a></h2></center>

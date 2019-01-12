@@ -15,4 +15,5 @@ urlpatterns = [
     path('admin/',views.admindashevents, name= 'admindashevents'),
     path('admin/pending/',views.pendingevent, name= 'pendingevent'),
     path('admin/new/',views.newevent, name= 'newevent'),
+    path('eventsall',views.eventsall, name= 'eventsall'),
 ]
