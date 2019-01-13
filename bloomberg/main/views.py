@@ -141,7 +141,22 @@ def index (request):
 	events_latest=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')[:4]
 
 	latest_question_list=Question.objects.filter(isLive =True).order_by('-createdAt')[:1]
+
+	question_id=latest_question_list[0].id
+
+	question=latest_question_list[0]
+	choices = question.choice_set.all()
 	email = 'glorify@iitg.ac.in'
+	emailID_for_poll=''
+	if request.session.has_key('eid'):
+		emailID_for_poll = request.session['eid']
+	string=str(question_id)
+	string=string+emailID_for_poll
+	if request.session.has_key(string):
+		pollVoted=1
+	else :
+		pollVoted=0
+	print(question.totalVotes)
 
 
 	context ={
@@ -152,6 +167,7 @@ def index (request):
 		'email' : email,
 		'events_latest' : events_latest,
 		'latest_question_list' : latest_question_list,
+		'pollVoted' : pollVoted,
 	}
 
 	return render(request , 'main/index.html' , context)

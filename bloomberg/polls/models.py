@@ -42,6 +42,7 @@ class Question(models.Model):
     authorID = models.CharField(max_length = 50)
     author = models.CharField(max_length = 50)
     isLive = models.BooleanField(default=False)
+    totalVotes = models.IntegerField(default=0)
     def __str__(self):
         return self.question_text
 

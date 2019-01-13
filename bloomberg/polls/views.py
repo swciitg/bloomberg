@@ -25,6 +25,8 @@ def vote(request, question_id):
         if request.session.has_key(string):
             pass
         else:
+            question.totalVotes = F('totalVotes') + 1
+            question.save()
             request.session[string]=selected_choice.id
             selected_choice.votes = F('votes') + 1
             selected_choice.save()
