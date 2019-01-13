@@ -369,15 +369,13 @@
 
 
 
-      <div class="grid-item item42">
+      <!-- <div class="grid-item item42">
         <div id="blank"></div>
         <h5 id="pick">POLL OF THE DAY</h5>
         <div id="poll-react">
           {% if latest_question_list %}
           <ul>
-                        <!-- {% if error_message  %}
-                            <p><strong>{{ error_message }}</strong></p>
-                        {% endif %} -->
+
               {% for question in latest_question_list %}
                 <h4>{{ question.question_text }}<h4>
                 <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -396,7 +394,7 @@
           {% endif %}
 
         </div>
-      </div>
+      </div> -->
     </div>
     <br/>
     <br/>

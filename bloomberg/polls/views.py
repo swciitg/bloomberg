@@ -67,7 +67,7 @@ def polladdform(request):
                     choice_text = choice2,
                 )
                 if choice3 != '':
-                    Choice.Objects.create(
+                    Choice.objects.create(
                         question_id = ques.id,
                         choice_text = choice3,
                     )

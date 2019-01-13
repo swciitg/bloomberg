@@ -68,7 +68,7 @@ def eventlive(request,pk):
             event.isLive = True
             event.approvedBy=user.name
             event.save()
-            return HttpResponseRedirect(reverse('event:pendingevent'))
+            return HttpResponseRedirect(reverse('events:pendingevent'))
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
@@ -84,7 +84,7 @@ def eventblock(request,pk):
             event.isLive = False
             event.approvedBy=user.name
             event.save()
-            return HttpResponseRedirect(reverse('event:pendingevent'))
+            return HttpResponseRedirect(reverse('events:pendingevent'))
         else:
             return HttpResponseRedirect(reverse('main:permissiondenied'))
     else:
@@ -98,7 +98,7 @@ def admindashevents (request):
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
-		events = Event.objects.all()
+		events = Event.objects.filter(isLive=True)
 		page_title = 'ALL EVENTS'
 		context = {
 			'user' : user ,
@@ -118,7 +118,7 @@ def pendingevent(request):
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
-		events = Event.objects.filter(approvedBy=None)
+		events = Event.objects.filter(isLive=False)
 
 		page_title='PENDING EVENTS'
 		context = {

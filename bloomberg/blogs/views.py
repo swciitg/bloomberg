@@ -50,7 +50,7 @@ def admindash (request):
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
-		blogs = Blog.objects.all()
+		blogs = Blog.objects.filter(isLive=True)
 		page_title = 'ALL POSTS'
 		context = {
 			'user' : user ,
@@ -137,7 +137,7 @@ def pendingpost(request):
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
 		if user.isBlocked:
 			return HttpResponseRedirect(reverse('main:permissiondenied'))
-		blogs = Blog.objects.filter(approvedBy=None)
+		blogs = Blog.objects.filter(isLive=False)
 		print(blogs)
 		page_title='PENDING POSTS'
 		context = {

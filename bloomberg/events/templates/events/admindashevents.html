@@ -60,7 +60,11 @@
       <p>Organizing Club : {{ event.organizingClub }}</p>
       <p>Date:{{ event.date }} </p>
       <p>Event Description :{{ event.description }}</p>
-
+      {% if event.isLive %}
+      <p><a href="{% url 'events:eventblock' event.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Block</button></span></a></p>
+      {% else %}
+      <p><a href="{% url 'events:eventlive' event.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Make Live</button></span></a></p>
+      {% endif %}
     </div>
     {% endfor %}
     <!-- <div>
