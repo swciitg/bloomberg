@@ -344,23 +344,28 @@
         <h5 id="pick">POLL OF THE DAY</h5>
         <div class="container-poll">
           {% if latest_question_list %}
-          <ul>
+          <ul style="padding-left: 00px;">
           {% for question in latest_question_list %}
               <!-- <p class="react-poll-clubname">Coding 101 - IIT Guwahati</p> -->
               <!-- <p class="react-poll-date">created a poll. | 6 June 2018</p> -->
               <p class="react-poll-textaboutpoll">{{ question.question_text }}</p>
               <form action="{% url 'polls:vote' question.id %}" method="post">
               {% csrf_token %}
-              {% for choice in question.choice_set.all %}
-              <div class="react-poll-field">
-                  <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
-                  <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
-                 {{ choice.votes }} vote{{ choice.votes|pluralize }}<br>
-             </div>
-             {% endfor %}
-             {% if pollVoted %}
-             {% else %}
-             <input type="submit" value="Vote">
+              {% if pollVoted %}
+                  {% for choice in question.choice_set.all %}
+                  <div class="react-poll-field" style="background: linear-gradient(90deg, #FFC0CB {% votes_percentage choice.votes question.totalVotes %}%, #00FFFF 0, #00FFFF {% rest_votes_percentage choice.votes question.totalVotes %}%);">
+                      <!-- <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" /> -->
+                      <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
+                  </div>
+                 {% endfor %}
+              {% else %}
+                  {% for choice in question.choice_set.all %}
+                   <div class="react-poll-field">
+                      <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
+                      <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
+                    </div>
+                  {% endfor %}
+                  <input type="submit" value="Vote">
              {% endif %}
              </form>
          {% endfor %}

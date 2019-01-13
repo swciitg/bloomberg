@@ -141,8 +141,11 @@ def index (request):
 	events_latest=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')[:4]
 
 	latest_question_list=Question.objects.filter(isLive =True).order_by('-createdAt')[:1]
-	
+
 	question_id=latest_question_list[0].id
+
+	question=latest_question_list[0]
+	choices = question.choice_set.all()
 	email = 'glorify@iitg.ac.in'
 	emailID_for_poll=''
 	if request.session.has_key('eid'):
@@ -153,6 +156,8 @@ def index (request):
 		pollVoted=1
 	else :
 		pollVoted=0
+	print(question.totalVotes)
+
 
 	context ={
 		'user' : user,
