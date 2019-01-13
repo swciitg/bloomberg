@@ -15,6 +15,7 @@
     <link href="{% static 'main/css/section2.css' %}" rel="stylesheet"/>
     <link href="{% static 'main/css/section3.css' %}" rel="stylesheet"/>
     <link href="{% static 'main/css/footer.css' %}" rel="stylesheet"/>
+    <link href="{% static 'main/css/poll.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block header %}
@@ -353,10 +354,14 @@
               {% for choice in question.choice_set.all %}
               <div class="react-poll-field">
                   <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
-                 <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
+                  <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.choice_text }}</span>
+                 {{ choice.votes }} vote{{ choice.votes|pluralize }}<br>
              </div>
              {% endfor %}
+             {% if pollVoted %}
+             {% else %}
              <input type="submit" value="Vote">
+             {% endif %}
              </form>
          {% endfor %}
          </ul>
@@ -368,16 +373,12 @@
     </div>
 
 
-
-      <div class="grid-item item42">
+      <!-- <div class="grid-item item42">
         <div id="blank"></div>
         <h5 id="pick">POLL OF THE DAY</h5>
         <div id="poll-react">
           {% if latest_question_list %}
           <ul>
-                        <!-- {% if error_message  %}
-                            <p><strong>{{ error_message }}</strong></p>
-                        {% endif %} -->
               {% for question in latest_question_list %}
                 <h4>{{ question.question_text }}<h4>
                 <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -387,13 +388,13 @@
                     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
                     {{ choice.votes }} vote{{ choice.votes|pluralize }}<br>
                 {% endfor %}
-                <input type="submit" value="Vote">
+
                 </form>
               {% endfor %}
           </ul>
           {% else %}
               <p> No polls available</p>
-          {% endif %}
+          {% endif %} -->
 
         </div>
       </div>

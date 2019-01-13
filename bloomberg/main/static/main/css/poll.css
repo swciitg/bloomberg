@@ -1,0 +1,43 @@
+.container-poll{
+    background-color: white;
+    padding-bottom: 0.6rem;
+    padding-top:0.6rem;
+    margin-top:-0.45rem;
+    border-bottom:1px solid rgba(212,212, 212, 0.699);
+    border-left:1px solid rgba(212,212, 212, 0.699);
+    border-right:1px solid rgba(212,212, 212, 0.699);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.react-poll-clubname{
+    font-weight: 600;
+    text-align: center;
+}
+.react-event-venue , .react-poll-date{
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: -1rem;
+    text-align: center;
+}
+.react-poll-textaboutpoll{
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: -0.5rem;
+    text-align: start;
+    margin-left:1.15rem;
+}
+.react-poll-field{
+    margin-left: 1.15rem;
+    border:1px solid rgba(187, 187, 187, 0.699);
+    margin-right: 1.15rem;
+    padding-left:1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+.react-poll-label{
+    font-size: 14px;
+    text-align: start;
+    margin-left:0.5rem;
+    line-height:80%;
+}
