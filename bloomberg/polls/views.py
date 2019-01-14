@@ -89,3 +89,95 @@ def polladdform(request):
     }
 
     return render(request , 'polls/pollupload.html' , context)
+
+def polllive(request,pk):
+    question=get_object_or_404(Question, pk=pk)
+
+    if request.session.has_key('eid'):
+        emailID=request.session['eid']
+        user=UserDetail.objects.get(emailID__exact=emailID)
+        if user.isAdmin:
+            question.isLive = True
+            question.approvedBy=user.name
+            question.save()
+            return HttpResponseRedirect(reverse('polls:pendingpolls'))
+        else:
+            return HttpResponseRedirect(reverse('main:permissiondenied'))
+    else:
+        return HttpResponseRedirect(reverse('main:login'))
+
+def pollblock(request,pk):
+    question=get_object_or_404(Question, pk=pk)
+
+    if request.session.has_key('eid'):
+        emailID=request.session['eid']
+        user=UserDetail.objects.get(emailID__exact=emailID)
+        if user.isAdmin:
+            question.isLive = False
+            question.approvedBy=user.name
+            question.save()
+            return HttpResponseRedirect(reverse('polls:pendingpolls'))
+        else:
+            return HttpResponseRedirect(reverse('main:permissiondenied'))
+    else:
+        return HttpResponseRedirect(reverse('main:login'))
+
+def admindashpolls (request):
+	if request.session.has_key('eid'):
+		emailID = request.session['eid']
+		user = UserDetail.objects.get(emailID = emailID)
+		if not user.isAdmin:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		if user.isBlocked:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		questions = Question.objects.filter(isLive=True)
+		page_title = 'ALL POLLS'
+		context = {
+			'user' : user ,
+			'questions' : questions ,
+			'page_title' : page_title,
+		}
+
+		return render(request , 'polls/admindashpolls.html' , context)
+
+	return HttpResponseRedirect(reverse('main:login'))
+
+def pendingpolls(request):
+
+	if request.session.has_key('eid'):
+		emailID = request.session['eid']
+		user = UserDetail.objects.get(emailID = emailID)
+		if not user.isAdmin:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		if user.isBlocked:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		questions = Question.objects.filter(isLive=False)
+
+		page_title='PENDING POLLS'
+		context = {
+			'user' : user ,
+			'questions' : questions ,
+			'page_title' : page_title,
+		}
+		return render(request , 'polls/admindashpolls.html' , context)
+
+
+def newpolls(request):
+	if request.session.has_key('eid'):
+		emailID = request.session['eid']
+		user = UserDetail.objects.get(emailID = emailID)
+		if not user.isAdmin:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		if user.isBlocked:
+			return HttpResponseRedirect(reverse('main:permissiondenied'))
+		page_title='NEW POLLS'
+		questions = Question.objects.all().order_by('-createdAt')
+		context = {
+			'user' : user ,
+			'questions' : questions ,
+			'page_title' : page_title,
+		}
+
+		return render(request , 'polls/admindashpolls.html' , context)
+
+	return HttpResponseRedirect(reverse('main:login'))

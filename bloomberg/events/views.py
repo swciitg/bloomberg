@@ -127,6 +127,7 @@ def pendingevent(request):
 			'page_title' : page_title,
 		}
 		return render(request , 'events/admindashevents.html' , context)
+    # return HttpResponseRedirect(reverse('main:login'))
 
 def newevent(request):
 	if request.session.has_key('eid'):
@@ -151,7 +152,11 @@ def newevent(request):
 def eventsall(request):
     date_today=datetime.datetime.now()
     eventsall=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')
+    user=''
+    if request.session.has_key('eid'):
+        user=UserDetail.objects.get(emailID=request.session['eid'])
     context = {
         'eventsall' : eventsall,
+        'user' : user,
     }
     return render(request, 'events/eventsall.html',context)

@@ -22,6 +22,10 @@
           </div>
           <div class="navbar-text navbar-right" id="media"  >
               <a href = "{% url 'main:index' %}"><button type="button" class="btn btn-outline-success">BACK TO HOME</button></a>
+              {% if user.isAdmin %}
+              <a href = "{% url 'blogs:admindash' %}"><button type="button" class="btn btn-outline-success">ADMIN PAGE</button></a>
+              <a href = "{% url 'polls:polladdform' %}"><button type="button" class="btn btn-outline-success">CREATE POLL</button></a>
+              {% endif %}
               <a href = "{% url 'events:eventUpload' %}"><button type="button" class="btn btn-outline-success">CREATE EVENT</button></a>
               <a href = "{% url 'main:logout' %}"><button type="button" class="btn btn-outline-success">LOG OUT</button></a>
           </div>

@@ -1,0 +1,40 @@
+.event-img{
+    height:12.2rem;
+    width: 100%;
+}
+#event-carousel-indicator{
+    display:none;
+}
+.react-event-clubname{
+    margin-top: 0.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+.react-event-venue , .react-event-datetime{
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: -1rem;
+    text-align: center;
+}
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: white;
+  text-decoration: none;
+}

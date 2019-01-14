@@ -15,13 +15,13 @@
   <nav>
     <ul>
       <li>
-        <a href="{% url 'events:admindashevents' %}">All Events</a>
+        <a href="{% url 'polls:admindashpolls' %}">All Polls</a>
       </li>
       <li>
-        <a href="{% url 'events:pendingevent' %}">Pending Events</a>
+        <a href="{% url 'polls:pendingpolls' %}">Pending Polls</a>
       </li>
       <li>
-        <a href="{% url 'events:newevent' %}">New Events</a>
+        <a href="{% url 'polls:newpolls' %}">New Polls</a>
       </li>
       <li>
         <a href="{% url 'main:logout' %}">Log Out</a>
@@ -46,26 +46,22 @@
 <hr>
 
   <article class="larg">
-    {% for event in events %}
+    {% for question in questions %}
     <div>
-      <h3>{{ event.title }} <select>
+      <h3>{{ question.question_text }} <select>
   <option value="Not Important">Not Important</option>
   <option value="Urgent">Urgent</option>
   <option value="Very Urgent">Very Urgent</option>
   </select><label class="switch">
   <input type="checkbox">
   <span class="slider round"></h3>
-
-      <p>Posted By : {{ event.postedBy }}</p>
-      <p> Event Title:  {{ event.title }}</p>
-      <p>Event Venue: {{ event.venue }}</p>
-      <p>Organizing Club : {{ event.organizingClub }}</p>
-      <p>Date:{{ event.date }} </p>
-      <p>Event Description :{{ event.description }}</p>
-      {% if event.isLive %}
-      <p><a href="{% url 'events:eventblock' event.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Block</button></span></a></p>
+      {% for choice in question.choice_set.all %}
+      <p>{{ choice }}</p>
+      {% endfor %}
+      {% if question.isLive %}
+      <p><a href="{% url 'polls:pollblock' question.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Block</button></span></a></p>
       {% else %}
-      <p><a href="{% url 'events:eventlive' event.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Make Live</button></span></a></p>
+      <p><a href="{% url 'polls:polllive' question.id %}"><span><button type="button" class="btn btn-outline-success btn-sm" >Make Live</button></span></a></p>
       {% endif %}
     </div>
     {% endfor %}

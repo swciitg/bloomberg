@@ -172,3 +172,26 @@ a.effect-underline:hover:after {
   margin-left: 0;
   padding-left: 0.5rem;
 }
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: grey !important;
+  text-decoration: none !important;
+}
+
+/* selected link */
+a:active {
+  color: white;
+  text-decoration: none;
+}
