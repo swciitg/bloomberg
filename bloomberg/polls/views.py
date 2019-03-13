@@ -21,7 +21,30 @@ def vote(request, question_id):
             emailID = request.session['eid']
         string=str(question_id)
         string=string+emailID
-        print(string)
+        if request.session.has_key(string):
+            pass
+        else:
+            question.totalVotes = F('totalVotes') + 1
+            question.save()
+            request.session[string]=selected_choice.id
+            selected_choice.votes = F('votes') + 1
+            selected_choice.save()
+
+        return HttpResponseRedirect(reverse('main:index'))
+
+def exitpollvote(request, question_id):
+    question = get_object_or_404(Question_exit_poll, pk=question_id)
+    try:
+        selected_choice = question.candidate_set.get(pk=request.POST['choice'])
+        print(selected_choice.name)
+    except (KeyError, Candidate.DoesNotExist):
+        return HttpResponseRedirect(reverse('main:index'))
+    else:
+        emailID=''
+        if request.session.has_key('eid'):
+            emailID=request.session['eid']
+        string=str(question_id)
+        string=string+emailID
         if request.session.has_key(string):
             pass
         else:

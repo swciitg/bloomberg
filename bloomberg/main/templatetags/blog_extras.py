@@ -21,3 +21,7 @@ def rest_votes_percentage(vote,total):
     percent = (total-vote)*100
     percent/=total
     return percent
+
+@register.filter
+def get_at_index(list, index):
+    return list[index]

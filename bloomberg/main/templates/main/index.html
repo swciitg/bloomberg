@@ -275,13 +275,12 @@
         </div>
       </div>
       <div class="grid-item item42">
-        <div class="grid-item item113">
           <div id="blank13"></div>
-          <p id="pick13" width="100%"><span id="pick13-events">EVENTS</span> <span id="pick13-latest">Latest</span><a href="{% url 'events:eventsall' %}"><span id="pick13-latest" style="float:right;display:block">View All&nbsp;&nbsp;</span></a></p>
+          <h5 id="pick">EXIT POLLS</h5>
           <div id="event">
               <div id="carousel_Exitpolls" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators" id="event-carousel-indicator">
-                    {% for event in events_latest %}
+                    {% for question in exitPoll_questions_list %}
                     {% if forloop.counter == 1 %}
                     <li data-target="#carousel_Exitpolls" data-slide-to="0" class="active"></li>
                     {% else %}
@@ -290,20 +289,52 @@
                     {% endfor %}
                   </ol>
                   <div class="carousel-inner">
-                    {% for event in events_latest %}
+
+                    {% for question in exitPoll_questions_list %}
                     {% if forloop.counter == 1 %}
                     <div class="carousel-item active">
-                      <img class="event-img" src="{{ event.image.url }}"/>
-                      <p class="react-event-clubname">{{ event.organizingClub }}</p>
-                      <p class="react-event-datetime">{{ event.date }}</p>
-                      <p class="react-event-venue">{{ event.venue }}</p>
+                      <div class="container-poll">
+                        <ul style="padding-left: 00px;">
+                        {% for question in exitPoll_questions_list %}
+                            <p class="react-poll-textaboutpoll">{{ question.question_text }}</p>
+                            {% if not exitPollVoted|get_at_index:forloop.counter %}
+                            <form action="{% url 'polls:exitpollvote' question.id %}" method="post">
+                            {% csrf_token %}
+                              {% for choice in question.candidate_set.all %}
+                                <div class="react-poll-field">
+                                  <center><input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
+                                  <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.name }}</span></center>
+                                </div>
+                              {% endfor %}
+                              <center><input type="submit" value="Vote"></center>
+                           </form>
+                           {% else %}
+                              <p>You Already Voted</p>
+                          {% endif %}
+                       {% endfor %}
+                       </ul>
+                      </div>
                     </div>
                     {% else %}
                     <div class="carousel-item">
-                      <img class="event-img" src="{{ event.image.url }}"/>
-                      <p class="react-event-clubname">{{ event.organizingClub }}</p>
-                      <p class="react-event-datetime">{{ event.date }}</p>
-                      <p class="react-event-venue">{{ event.venue }}</p>
+
+                      <div class="container-poll">
+                        <ul style="padding-left: 00px;">
+                        {% for question in exitPoll_questions_list %}
+                            <p class="react-poll-textaboutpoll">{{ question.question_text }}</p>
+                            <form action="{% url 'polls:exitpollvote' question.id %}" method="post">
+                            {% csrf_token %}
+                                {% for choice in question.candidate_set.all %}
+                                 <div class="react-poll-field">
+                                    <input id="choice{{ forloop.counter }}" name="choice" type="radio" value="{{choice.id}}" />
+                                    <span for="choice{{ forloop.counter }}" class="react-poll-label">{{ choice.name }}</span>
+                                  </div>
+                                {% endfor %}
+                                <center><input type="submit" value="Vote"></center>
+                           </form>
+                       {% endfor %}
+                       </ul>
+                      </div>
                     </div>
                     {% endif %}
                     {% endfor %}
@@ -318,13 +349,7 @@
                   </a>
                 </div>
           </div>
-        </div>
       </div>
-
-
-
-
-
 
     </div>
   </div>

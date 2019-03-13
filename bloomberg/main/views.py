@@ -9,7 +9,7 @@ from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
 from .models import UserDetail, Session
 from events.models import Event
-from polls.models import Question, Choice
+from polls.models import Question, Choice , Candidate , Question_exit_poll
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from blogs.models import Blog
@@ -133,7 +133,6 @@ def index (request):
 			HttpResponseRedirect(reverse('main:logout'))
 
 	date_today=datetime.datetime.now()
-	print(date_today.date())
 
 	blog_latest = Blog.objects.filter(isLive = True)[:4]
 	blog_featured_crousal =Blog.objects.filter(isLive = True).order_by('-views')[:5]
@@ -141,6 +140,9 @@ def index (request):
 	events_latest=Event.objects.filter(isLive =True).filter(date__gte=date_today.date()).order_by('date')[:4]
 
 	latest_question_list=Question.objects.filter(isLive =True).order_by('-createdAt')[:1]
+
+	exitPoll_questions_list = Question_exit_poll.objects.all();
+
 
 	question_id=latest_question_list[0].id
 
@@ -156,8 +158,17 @@ def index (request):
 		pollVoted=1
 	else :
 		pollVoted=0
-	print(question.totalVotes)
 
+	exitPollVoted = []
+	exitPollVoted.append(0)
+	for exitPollQuestion in exitPoll_questions_list:
+		exitpollId = exitPollQuestion.id
+		qId = str(exitpollId)
+		qID = emailID_for_poll+qId
+		if request.session.has_key(qId):
+			exitPollVoted.append(1)
+		else :
+			exitPollVoted.append(0)
 
 	context ={
 		'user' : user,
@@ -168,6 +179,8 @@ def index (request):
 		'events_latest' : events_latest,
 		'latest_question_list' : latest_question_list,
 		'pollVoted' : pollVoted,
+		'exitPoll_questions_list' : exitPoll_questions_list,
+		'exitPollVoted' : exitPollVoted,
 	}
 
 	return render(request , 'main/index.html' , context)
