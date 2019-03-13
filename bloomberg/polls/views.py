@@ -1,9 +1,9 @@
-from .models import Question, Choice
+from .models import Question, Choice, Question_exit_poll, Candidate
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F
 from django.http import HttpResponseRedirect , HttpResponse
-from polls.forms import PollForm
+from polls.forms import PollForm, ExitPollForm
 from main.models import UserDetail
 
 # Create your views here.
@@ -181,3 +181,80 @@ def newpolls(request):
 		return render(request , 'polls/admindashpolls.html' , context)
 
 	return HttpResponseRedirect(reverse('main:login'))
+
+
+def exitpolladdform(request):
+    if not request.session.has_key('eid'):
+        return HttpResponseRedirect(reverse('main:login'))
+
+    if request.method == 'POST':
+        polls_form = ExitPollForm(request.POST)
+        question = request.POST['question']
+        contestingPost = request.POST['contestingPost']
+        candidate_1 = request.POST['candidate_1']
+        candidate_2 = request.POST['candidate_2']
+        candidate_3 = request.POST['candidate_3']
+        candidate_4 = request.POST['candidate_4']
+        candidate_5 = request.POST['candidate_5']
+        candidate_6 = request.POST['candidate_6']
+
+        if polls_form.is_valid():
+            email = request.session['eid']
+            try:
+                user = UserDetail.objects.get(emailID__exact=email)
+            except UserDetail.DoesNotExist:
+                return HttpResponseRedirect(reverse('main:logout'))
+            else:
+                if not user.isAdmin:
+                    return HttpResponseRedirect(reverse('main:permissiondenied'))
+                ques = Question_exit_poll.objects.create(
+                    question_text = question,
+                    authorID = user.userID,
+                    author = user,
+                    contestingPost = contestingPost,
+                )
+                print(ques.id)
+                Candidate.objects.create(
+                    question_id = ques.id,
+                    name = candidate_1,
+                    contestingPost = contestingPost,
+                )
+                Candidate.objects.create(
+                    question_id = ques.id,
+                    name = candidate_2,
+                    contestingPost = contestingPost,
+                )
+                if candidate_3 != '':
+                    Candidate.objects.create(
+                        question_id = ques.id,
+                        name = candidate_3,
+                        contestingPost = contestingPost,
+                    )
+                if candidate_4 != '':
+                    Candidate.objects.create(
+                        question_id = ques.id,
+                        name = candidate_4,
+                        contestingPost = contestingPost,
+                    )
+                if candidate_5 != '':
+                    Candidate.objects.create(
+                        question_id = ques.id,
+                        name = candidate_5,
+                        contestingPost = contestingPost,
+                    )
+                if candidate_6 != '':
+                    Candidate.objects.create(
+                        question_id = ques.id,
+                        name = candidate_6,
+                        contestingPost = contestingPost,
+                    )
+                return HttpResponse('exit poll upload success')
+
+        return HttpResponseRedirect(reverse('polls:exitpolladdform'))
+    else:
+        exit_polls_form = ExitPollForm()
+    context = {
+        'form' : exit_polls_form
+    }
+
+    return render(request , 'polls/exitpollupload.html' , context)

@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin/',views.admindashpolls, name= 'admindashpolls'),
     path('admin/pending/',views.pendingpolls, name= 'pendingpolls'),
     path('admin/new/',views.newpolls, name= 'newpolls'),
+	path('exitpollupload/',views.exitpolladdform, name='exitpolladdform'),
 ]
